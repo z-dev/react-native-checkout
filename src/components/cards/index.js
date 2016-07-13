@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import { Card } from './card.js'
 import _ from 'lodash'
 
