@@ -1,0 +1,33 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+
+  "plugins": [
+     "import",
+  ],
+
+  "rules": {
+    arrow-body-style: [0],
+    comma-dangle: [0, "never"],
+    import/no-unresolved: [0],
+    import/no-commonjs: [2],
+    no-console: [0],
+    semi: [2, "never"],
+    space-before-function-paren: [2, "never"],
+    space-return-throw-case: [0],
+    object-shorthand: [0],
+    complexity: [0],
+    strict: [2, "never"],
+    react/prop-types: [0],
+    max-len: [2, 180, 4],
+    react/prefer-stateless-function: [0]
+  },
+  "settings": {
+    import/parser: "babel-eslint"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+    }
+  },
+}

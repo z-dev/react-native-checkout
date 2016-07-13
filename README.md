@@ -1,4 +1,4 @@
-# react-native-stripe-checkout
+# react-native-stripe-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-stripe-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-stripe-checkout)
 
 React Native component which mimics Stripe's ios component.
 
@@ -9,7 +9,7 @@ For iOS and Android
 ```
   <SelectPayment
     enableApplePay={true} // optional, default: false
-    applePayHandler={() => console.log('apple pay is go')} // optional, mandatory if enableApplePay={true} 
+    applePayHandler={() => console.log('apple pay is go')} // optional, mandatory if enableApplePay={true}
     paymentSources={[{}]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for exact format.
     selectPaymentHandler={(paymentSource) => console.log(paymentSource)}
     fontFamily="" // Optional, Default: iOS default
@@ -17,8 +17,8 @@ For iOS and Android
     //more custom styles
 
   />
-  
-  <AddCard 
+
+  <AddCard
     createCardHandler={(cardDetails) => console.log(cardDetails)}
     invalidStyle={{borderColor: 'red'}} // Optional. Default: {borderColor: 'red'}
     fontFamily="" // Optional, Default: iOS default
@@ -35,14 +35,14 @@ No Nav. No card picture. Apple pay present if it exists. Simple Add button at bo
 
 ## Adding a card
 
-We provide support for the minimal number of fields: 
+We provide support for the minimal number of fields:
 
 * Card Number
 * Expiry Month
 * Expiry Year
 * CVC
 
-These fields are validated using https://github.com/jessepollak/payment. 
+These fields are validated using https://github.com/jessepollak/payment.
 
 ![](https://stripe.com/img/documentation/ios/stripe-ios-ui-theming.png)
 
