@@ -7,19 +7,22 @@ For iOS and Android
 ## Usage
 
 ```
-  <StripeCheckout
+  <SelectPayment
     enableApplePay={true} // optional, default: false
     applePayHandler={() => console.log('apple pay is go')} // optional, mandatory if enableApplePay={true} 
-    sources={[{}]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for exact format.
-    stripePublishableKey="pk_12345"
-    createCardHandler={(token) => console.log('Stripe Token: ' + token)}
-    stripeCustomer="cust_id"
-    invalidStyle={{borderColor: 'red'}} // Optional. Default: {borderColor: 'red'}
-    selectPaymentMethod={(token) => console.log(token)}
+    paymentSources={[{}]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for exact format.
+    selectPaymentHandler={(paymentSource) => console.log(paymentSource)}
     fontFamily="" // Optional, Default: iOS default
     fontSize={16} // Optional, Default: iOS default
     //more custom styles
 
+  />
+  
+  <AddCard 
+    createCardHandler={(cardDetails) => console.log(cardDetails)}
+    invalidStyle={{borderColor: 'red'}} // Optional. Default: {borderColor: 'red'}
+    fontFamily="" // Optional, Default: iOS default
+    fontSize={16} // Optional, Default: iOS default
   />
 ```
 
