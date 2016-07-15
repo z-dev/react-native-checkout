@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { getCardToken } from '../../common/stripe'
 
-import { AddCard } from '../addCard'
+import AddCard from '../addCard'
 
 export class StripeAddCard extends Component {
 
   render() {
     return (
-      <AddCard addCard={(cardNumber, expiryDate, cvc) => {
+      <AddCard addCardHandler={(cardNumber, expiryDate, cvc) => {
         getCardToken(cardNumber, expiryDate, cvc, this.props.publicStripeKey)
-          .then((token) => this.props.response(token))
+          .then((token) => this.props.addCardTokenHandler(token))
       }}
       />
     )

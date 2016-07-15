@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export class AddCard extends Component {
+export default class AddCard extends Component {
   constructor(props) {
     super(props)
     this.state = { cardNumber: '', expiryDate: '', cvc: '' }
@@ -48,7 +48,7 @@ export class AddCard extends Component {
           value={this.state.cvc}
           placeholder={'123'}
         />
-        <TouchableHighlight style={[styles.highlight, this.props.highlightStyle]} onPress={() => this.props.addCard(this.state.cardNumber, this.state.expiryDate, this.state.cvc)}>
+        <TouchableHighlight style={[styles.highlight, this.props.highlightStyle]} onPress={() => this.props.addCardHandler(this.state.cardNumber, this.state.expiryDate, this.state.cvc)}>
           <Text>
             + Add Card
           </Text>
