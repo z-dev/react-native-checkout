@@ -1,7 +1,7 @@
 {
   "name": "react-native-payment-cards",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "dependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "react": "15.2.1",
