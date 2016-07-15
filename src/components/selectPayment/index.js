@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export class SelectPayment extends Component {
+export default class SelectPayment extends Component {
   render() {
     return (
       <View style={styles.test}>

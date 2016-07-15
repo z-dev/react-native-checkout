@@ -3,7 +3,7 @@ import { getCardToken } from '../../common/stripe'
 
 import AddCard from '../addCard'
 
-export class StripeAddCard extends Component {
+export default class StripeAddCard extends Component {
 
   render() {
     return (
