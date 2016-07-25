@@ -13,6 +13,7 @@ export class Cards extends Component {
               last4={paymentSource.last4}
               brand={paymentSource.brand}
               selectPaymentHandler={(paymentSource) => this.props.selectPaymentHandler(paymentSource)}
+              paymentSource={paymentSource}
             />
           )
         })}

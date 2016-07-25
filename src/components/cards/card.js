@@ -5,7 +5,7 @@ export class Card extends Component {
   render() {
     return (
       <View>
-        <TouchableHighlight onPress={(paymentSource) => this.props.selectPaymentHandler(paymentSource)}>
+        <TouchableHighlight onPress={(paymentSource) => this.props.selectPaymentHandler(this.props.paymentSource)}>
           <Text>
             { this.props.brand } Ending in { this.props.last4 }
           </Text>
