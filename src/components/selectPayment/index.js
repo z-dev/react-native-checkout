@@ -14,8 +14,8 @@ export default class SelectPayment extends Component {
       <View style={styles.test}>
         { this.props.enableApplePay ? <TouchableHighlight onPress={() => this.props.applePayHandler()}><Text>Apple Pay</Text></TouchableHighlight> : null }
         <Cards
-          paymentSources={ this.props.paymentSources }
-          selectPaymentHandler={ (paymentSource) => this.props.selectPaymentHandler(paymentSource) }
+          paymentSources={this.props.paymentSources}
+          selectPaymentHandler={(paymentSource) => this.props.selectPaymentHandler(paymentSource)}
         />
         <TouchableHighlight onPress={() => this.props.addCardHandler()}>
           <Text>
