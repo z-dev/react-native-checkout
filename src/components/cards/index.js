@@ -12,7 +12,7 @@ export class Cards extends Component {
             <Card
               last4={paymentSource.last4}
               brand={paymentSource.brand}
-              selectPaymentHandler={() => this.props.selectPaymentHandler(paymentSource)}
+              selectPaymentHandler={(paymentSource) => this.props.selectPaymentHandler(paymentSource)}
             />
           )
         })}
