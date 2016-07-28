@@ -5,7 +5,7 @@ const stripeUrl = 'https://api.stripe.com/v1/'
 export const getCardToken = (cardNumber, expiryMonth, expiryYear, cvc, publicStripeKey) => {
   const cardDetails = {
     'card[number]': cardNumber,
-    'card[exp_month]': expiryMonth,
+    'card[exp_month]': expiryMont,
     'card[exp_year]': expiryYear,
     'card[cvc]': cvc,
   }
