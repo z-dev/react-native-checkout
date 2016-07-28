@@ -27,6 +27,12 @@ export default class AddCard extends Component {
     this.state = { cardNumber: '', expiryMonth: '', expiryYear: '', cvc: '' }
   }
 
+  changeInput(ref) {
+    if (expiryMonth.length === 2) {
+      ref.focus()
+    }
+  }
+
   render() {
     return (
       <View style={styles.test}>
@@ -42,9 +48,7 @@ export default class AddCard extends Component {
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryMonth) => {
-            if (expiryMonth.length === 2) {
-              this.refs.YearInput.focus()
-            }
+            this.changeInput(this.refs.YearInput)
             this.setState({ expiryMonth })
           }}
           value={this.state.expiryMonth}
@@ -55,11 +59,15 @@ export default class AddCard extends Component {
           maxLength={2}
           keyboardType={'numeric'}
           style={styles.textInput}
-          onChangeText={(expiryYear) => this.setState({ expiryYear })}
+          onChangeText={(expiryYear) => {
+            this.changeInput(this.refs.cvcInput)
+            this.setState({ expiryYear })
+          }}
           value={this.state.expiryYear}
           placeholder={'19'}
         />
         <TextInput
+          ref={'cvcInput'}
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(cvc) => this.setState({ cvc })}
