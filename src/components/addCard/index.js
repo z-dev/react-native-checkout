@@ -48,16 +48,16 @@ export default class AddCard extends Component {
             this.setState({ expiryMonth })
           }}
           value={this.state.expiryMonth}
-          placeholder={'3/19'}
+          placeholder={'03'}
         />
         <TextInput
           ref={'YearInput'}
-          maxLength={4}
+          maxLength={2}
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryYear) => this.setState({ expiryYear })}
           value={this.state.expiryYear}
-          placeholder={'3/19'}
+          placeholder={'19'}
         />
         <TextInput
 
