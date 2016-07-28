@@ -42,7 +42,7 @@ export default class AddCard extends Component {
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryMonth) => {
-            if(expiryMonth.length === 2) {
+            if (expiryMonth.length === 2) {
               this.refs.YearInput.focus()
             }
             this.setState({ expiryMonth })
