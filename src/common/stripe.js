@@ -2,12 +2,11 @@ import _ from 'lodash'
 
 const stripeUrl = 'https://api.stripe.com/v1/'
 
-export const getCardToken = (cardNumber, expiryDate, cvc, publicStripeKey) => {
-  const splitDate = expiryDate.split('/')
+export const getCardToken = (cardNumber, expiryMonth, expiryYear, cvc, publicStripeKey) => {
   const cardDetails = {
     'card[number]': cardNumber,
-    'card[exp_month]': splitDate[0],
-    'card[exp_year]': splitDate[1],
+    'card[exp_month]': expiryMonth,
+    'card[exp_year]': expiryYear,
     'card[cvc]': cvc,
   }
 

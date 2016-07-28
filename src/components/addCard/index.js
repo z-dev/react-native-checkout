@@ -69,7 +69,7 @@ export default class AddCard extends Component {
         />
         <TouchableHighlight
           style={[styles.highlight, this.props.highlightStyle]}
-          onPress={() => this.props.addCardHandler(this.state.cardNumber, this.state.expiryDate, this.state.cvc)}
+          onPress={() => this.props.addCardHandler(this.state.cardNumber, this.state.expiryMonth, this.state.expiryYear, this.state.cvc)}
         >
           <Text>
             + Add Card
