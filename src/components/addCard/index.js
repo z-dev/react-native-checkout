@@ -48,7 +48,7 @@ export default class AddCard extends Component {
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryMonth) => {
-            this.changeInput(this.refs.yearInput, this.state.expiryMonth)
+            this.changeInput(this.refs.yearInput, expiryMonth)
             this.setState({ expiryMonth })
           }}
           value={this.state.expiryMonth}
