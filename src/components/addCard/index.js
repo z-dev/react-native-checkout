@@ -24,25 +24,44 @@ const styles = StyleSheet.create({
 export default class AddCard extends Component {
   constructor(props) {
     super(props)
-    this.state = { cardNumber: '', expiryDate: '', cvc: '' }
+    this.state = { cardNumber: '', expiryYear: '', expiryMonth: '', cvc: '' }
   }
 
   render() {
     return (
       <View style={styles.test}>
         <TextInput
+          keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(cardNumber) => this.setState({ cardNumber })}
           value={this.state.cardNumber}
           placeholder={'4242424242424242'}
         />
         <TextInput
+          maxLength={2}
+          keyboardType={'numeric'}
           style={styles.textInput}
-          onChangeText={(expiryDate) => this.setState({ expiryDate })}
-          value={this.state.expiryDate}
+          onChangeText={(expiryMonth) => {
+            if(expiryMonth.length === 2) {
+              this.refs.YearInput.focus()
+            }
+            this.setState({ expiryMonth })
+          }}
+          value={this.state.expiryMonth}
           placeholder={'3/19'}
         />
         <TextInput
+          ref={'YearInput'}
+          maxLength={4}
+          keyboardType={'numeric'}
+          style={styles.textInput}
+          onChangeText={(expiryYear) => this.setState({ expiryYear })}
+          value={this.state.expiryYear}
+          placeholder={'3/19'}
+        />
+        <TextInput
+
+          keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={ (cvc) => this.setState({ cvc }) }
           value={this.state.cvc}
