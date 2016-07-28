@@ -1,6 +1,6 @@
 {
   "name": "react-native-payment-cards",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": false,
   "main": "src/index.js",
   "dependencies": {
