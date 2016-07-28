@@ -27,8 +27,8 @@ export default class AddCard extends Component {
     this.state = { cardNumber: '', expiryMonth: '', expiryYear: '', cvc: '' }
   }
 
-  changeInput(ref) {
-    if (expiryMonth.length === 2) {
+  changeInput(ref, input) {
+    if (input.length === 2) {
       ref.focus()
     }
   }
@@ -48,7 +48,7 @@ export default class AddCard extends Component {
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryMonth) => {
-            this.changeInput(this.refs.yearInput)
+            this.changeInput(this.refs.yearInput, this.state.expiryMonth)
             this.setState({ expiryMonth })
           }}
           value={this.state.expiryMonth}
@@ -60,7 +60,7 @@ export default class AddCard extends Component {
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryYear) => {
-            this.changeInput(this.refs.cvcInput)
+            this.changeInput(this.refs.cvcInput, this.state.expiryYear)
             this.setState({ expiryYear })
           }}
           value={this.state.expiryYear}
