@@ -7,8 +7,8 @@ export default class StripeAddCard extends Component {
 
   render() {
     return (
-      <AddCard addCardHandler={(cardNumber, expiryDate, cvc) => {
-        getCardToken(cardNumber, expiryDate, cvc, this.props.publicStripeKey)
+      <AddCard addCardHandler={(cardNumber, expiryMonth, expiryYear, cvc) => {
+        getCardToken(cardNumber, expiryMonth, expiryYear, cvc, this.props.publicStripeKey)
           .then((token) => this.props.addCardTokenHandler(token))
       }}
       />

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 export default class AddCard extends Component {
   constructor(props) {
     super(props)
-    this.state = { cardNumber: '', expiryYear: '', expiryMonth: '', cvc: '' }
+    this.state = { cardNumber: '', expiryMonth: '', expiryYear: '', cvc: '' }
   }
 
   render() {
@@ -60,10 +60,9 @@ export default class AddCard extends Component {
           placeholder={'19'}
         />
         <TextInput
-
           keyboardType={'numeric'}
           style={styles.textInput}
-          onChangeText={ (cvc) => this.setState({ cvc }) }
+          onChangeText={(cvc) => this.setState({ cvc })}
           value={this.state.cvc}
           placeholder={'123'}
         />
