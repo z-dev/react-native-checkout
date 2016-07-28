@@ -48,14 +48,14 @@ export default class AddCard extends Component {
           keyboardType={'numeric'}
           style={styles.textInput}
           onChangeText={(expiryMonth) => {
-            this.changeInput(this.refs.YearInput)
+            this.changeInput(this.refs.yearInput)
             this.setState({ expiryMonth })
           }}
           value={this.state.expiryMonth}
           placeholder={'03'}
         />
         <TextInput
-          ref={'YearInput'}
+          ref={'yearInput'}
           maxLength={2}
           keyboardType={'numeric'}
           style={styles.textInput}
