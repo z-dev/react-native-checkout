@@ -6,7 +6,8 @@
   "dependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "react": "15.2.1",
-    "react-native": "^0.29.0"
+    "react-native": "^0.29.0",
+    "react-native-keyboard-spacer": "^0.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.0",

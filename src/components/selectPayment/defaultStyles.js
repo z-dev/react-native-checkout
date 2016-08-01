@@ -1,16 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { bold, grey, pressableColor, touchableOpacityContainer, innerTouchableOpacityContainer } from '../../common/styles'
 
-const pressableColor = 'rgba(0,122,255,1)'
-const grey = '#F8F8F8'
-const bold = '500'
-const cardContainer = {
-  paddingLeft: 12,
-  paddingRight: 12,
-  backgroundColor: 'white',
-}
 export default ({
   addButton: {
-    ...cardContainer,
+    ...touchableOpacityContainer,
     marginTop: 20,
     marginBottom: 20,
     borderBottomWidth: 1,
@@ -28,7 +20,7 @@ export default ({
   cardBrandImage: {
     marginRight: 8,
   },
-  cardContainer: cardContainer,
+  touchableOpacityContainer: touchableOpacityContainer,
   cardsLoadingIndicator: {
     marginTop: 20
   },
@@ -46,13 +38,8 @@ export default ({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  innerCardContainer: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: grey,
-    paddingBottom: 12,
-    paddingTop: 12,
-  },
-  innerCardContainerLast: {
+  innerTouchableOpacityContainer: innerTouchableOpacityContainer,
+  innerTouchableOpacityContainerLast: {
     borderBottomWidth: 0,
   },
   paymentMethodsContainer: {
