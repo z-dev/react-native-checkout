@@ -1,27 +1,22 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
-import { Cards } from '../cards'
-
-const styles = StyleSheet.create({
-  test: {
-    marginTop: 100
-  }
-})
-
+import { View, Text } from 'react-native'
+import PaymentMethods from '../paymentMethods'
+import defaultStyles from './defaultStyle'
+import PaymentMethodContainer from '../paymentMethods/paymentMethodContainer'
 export default class SelectPayment extends Component {
   render() {
     return (
-      <View style={styles.test}>
-        { this.props.enableApplePay ? <TouchableHighlight onPress={() => this.props.applePayHandler()}><Text>Apple Pay</Text></TouchableHighlight> : null }
-        <Cards
+      <View style={defaultStyles.selectPaymentContainer}>
+        <PaymentMethods
           paymentSources={this.props.paymentSources}
-          selectPaymentHandler={(paymentSource) => this.props.selectPaymentHandler(paymentSource)}
+          selectPaymentHandler={this.props.selectPaymentHandler}
+          applePayHandler={this.props.applePayHandler}
+          enableApplePay={this.props.enableApplePay}
+          styles={defaultStyles}
         />
-        <TouchableHighlight onPress={() => this.props.addCardHandler()}>
-          <Text>
-            Add New Card
-          </Text>
-        </TouchableHighlight>
+        <PaymentMethodContainer style={defaultStyles.addButton} styles={defaultStyles} onPress={() => this.props.addCardHandler()} last>
+          <Text style={defaultStyles.addButtonText}>Add New Card</Text>
+        </PaymentMethodContainer>
       </View>
     )
   }

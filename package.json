@@ -27,6 +27,7 @@
   "scripts": {
     "lint_js": "eslint src --ext=js --ext=jsx",
     "lint": "npm run lint_js",
+    "lint:watch": "nodemon --exec \"npm run lint\"",
     "ci": "npm run lint"
   }
 }
