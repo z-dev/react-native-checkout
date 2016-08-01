@@ -3,9 +3,11 @@ import { View, Text } from 'react-native'
 import PaymentMethods from '../paymentMethods'
 import defaultStyles from './defaultStyles'
 import TouchableOpacity from '../common/touchableOpacity'
+import _ from 'lodash'
+
 export default class SelectPayment extends Component {
   render() {
-    const styles = _.merge({...defaultStyles}, props.styles)
+    const styles = _.merge({ ...defaultStyles }, this.props.styles)
     return (
       <View style={styles.selectPaymentContainer}>
         <PaymentMethods

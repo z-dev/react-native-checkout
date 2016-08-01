@@ -3,6 +3,7 @@ import { View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
+import _ from 'lodash'
 
 export default class AddCard extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class AddCard extends Component {
   }
 
   render() {
-    const styles = _.merge({...defaultStyles}, props.styles)
+    const styles = _.merge({ ...defaultStyles }, this.props.styles)
 
     return (
       <View style={styles.addCardContainer}>
