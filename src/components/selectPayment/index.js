@@ -5,17 +5,18 @@ import defaultStyles from './defaultStyles'
 import TouchableOpacity from '../common/touchableOpacity'
 export default class SelectPayment extends Component {
   render() {
+    const styles = _.merge({...defaultStyles}, props.styles)
     return (
-      <View style={defaultStyles.selectPaymentContainer}>
+      <View style={styles.selectPaymentContainer}>
         <PaymentMethods
           paymentSources={this.props.paymentSources}
           selectPaymentHandler={this.props.selectPaymentHandler}
           applePayHandler={this.props.applePayHandler}
           enableApplePay={this.props.enableApplePay}
-          styles={defaultStyles}
+          styles={styles}
         />
-        <TouchableOpacity style={defaultStyles.addButton} styles={defaultStyles} onPress={() => this.props.addCardHandler()} last>
-          <Text style={defaultStyles.addButtonText}>Add New Card</Text>
+        <TouchableOpacity style={styles.addButton} styles={styles} onPress={() => this.props.addCardHandler()} last>
+          <Text style={styles.addButtonText}>Add New Card</Text>
         </TouchableOpacity>
       </View>
     )

@@ -21,26 +21,28 @@ export default class AddCard extends Component {
   }
 
   render() {
+    const styles = _.merge({...defaultStyles}, props.styles)
+
     return (
-      <View style={defaultStyles.addCardContainer}>
+      <View style={styles.addCardContainer}>
         <View>
-          <View style={defaultStyles.cardNumberContainer}>
-            <Image resizeMode="contain" style={defaultStyles.cardNumberImage} source={require('../../../assets/images/card_front.png')} />
+          <View style={styles.cardNumberContainer}>
+            <Image resizeMode="contain" style={styles.cardNumberImage} source={require('../../../assets/images/card_front.png')} />
             <TextInput
               ref="cardNumber"
               keyboardType="numeric"
-              style={defaultStyles.cardNumberInput}
+              style={styles.cardNumberInput}
               onChangeText={(cardNumber) => this.setState({ cardNumber })}
               value={this.state.cardNumber}
               placeholder="4242424242424242"
             />
           </View>
-          <View style={defaultStyles.monthYearContainer}>
-            <Image resizeMode="contain" style={defaultStyles.cardExpiryImage} source={require('../../../assets/images/card_expiry.png')} />
+          <View style={styles.monthYearContainer}>
+            <Image resizeMode="contain" style={styles.cardExpiryImage} source={require('../../../assets/images/card_expiry.png')} />
             <TextInput
               maxLength={2}
               keyboardType="numeric"
-              style={defaultStyles.monthTextInput}
+              style={styles.monthTextInput}
               onChangeText={(expiryMonth) => {
                 this.changeInput(this.refs.yearInput, expiryMonth)
                 this.setState({ expiryMonth })
@@ -53,7 +55,7 @@ export default class AddCard extends Component {
               ref="yearInput"
               maxLength={2}
               keyboardType="numeric"
-              style={defaultStyles.yearTextInput}
+              style={styles.yearTextInput}
               onChangeText={(expiryYear) => {
                 this.changeInput(this.refs.cvcInput, expiryYear)
                 this.setState({ expiryYear })
@@ -62,19 +64,19 @@ export default class AddCard extends Component {
               placeholder="YY"
             />
           </View>
-          <View style={defaultStyles.cvcContainer}>
-            <Image resizeMode="contain" style={defaultStyles.cvcImage} source={require('../../../assets/images/card_cvc.png')} />
+          <View style={styles.cvcContainer}>
+            <Image resizeMode="contain" style={styles.cvcImage} source={require('../../../assets/images/card_cvc.png')} />
             <TextInput
               ref="cvcInput"
               keyboardType="numeric"
-              style={defaultStyles.cvcInput}
+              style={styles.cvcInput}
               onChangeText={(cvc) => this.setState({ cvc })}
               value={this.state.cvc}
               placeholder="CVC"
             />
           </View>
-            <TouchableOpacity style={defaultStyles.addButton} styles={defaultStyles} onPress={() => this.props.addCardHandler()} last>
-              <Text style={defaultStyles.addButtonText}>Add Card</Text>
+            <TouchableOpacity style={styles.addButton} styles={styles} onPress={() => this.props.addCardHandler()} last>
+              <Text style={styles.addButtonText}>Add Card</Text>
             </TouchableOpacity>
         </View>
         <KeyboardSpacer />
