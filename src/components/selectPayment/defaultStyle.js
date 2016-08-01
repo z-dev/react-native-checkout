@@ -29,6 +29,9 @@ export default ({
     marginRight: 8,
   },
   cardContainer: cardContainer,
+  cardsLoadingIndicator: {
+    marginTop: 20
+  },
   cardTextLast4: {
     fontWeight: bold
   },
