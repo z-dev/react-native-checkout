@@ -6,9 +6,6 @@ import _ from 'lodash'
 
 export default class PaymentMethods extends Component {
   cards() {
-    if (!this.props.paymentSources) {
-      return <ActivityIndicator style={this.props.styles.cardsLoadingIndicator} />
-    }
     return (
       _.map(this.props.paymentSources, (paymentSource, i) => {
         return (
@@ -29,10 +26,13 @@ export default class PaymentMethods extends Component {
   render() {
     return (
       <View style={this.props.styles.paymentMethodsContainer}>
-        { this.props.enableApplePay
-          ? <ApplePay styles={this.props.styles} applePayHandler={this.props.applePayHandler} last={_.isEmpty(this.props.paymentSources)} />
-          : null }
-        { this.cards() }
+        <View style={this.props.styles.paymentMethodsInnerContainer}>
+          { this.props.enableApplePay
+            ? <ApplePay styles={this.props.styles} applePayHandler={this.props.applePayHandler} last={_.isEmpty(this.props.paymentSources)} />
+            : null }
+          { this.cards() }
+        </View>
+        {!this.props.paymentSources ? <ActivityIndicator style={this.props.styles.cardsLoadingIndicator} /> : null}
       </View>
     )
   }

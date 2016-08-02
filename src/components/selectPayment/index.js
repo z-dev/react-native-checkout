@@ -7,7 +7,7 @@ import _ from 'lodash'
 
 export default class SelectPayment extends Component {
   render() {
-    const styles = _.merge({ ...defaultStyles }, this.props.styles)
+    const styles = _.merge({}, defaultStyles, this.props.styles)
     return (
       <View style={styles.selectPaymentContainer}>
         <PaymentMethods

@@ -45,6 +45,8 @@ export default ({
   paymentMethodsContainer: {
     justifyContent: 'flex-end',
     flex: 1,
+  },
+  paymentMethodsInnerContainer: {
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: grey,

@@ -6,6 +6,7 @@ const textInput = {
   paddingRight: 12,
   height: 44,
   backgroundColor: 'white',
+  flex: 1,
 }
 
 const cardImage = {
@@ -21,6 +22,9 @@ const cardFieldContainer = {
 }
 
 export default ({
+  activityIndicator: {
+    height: 200,
+  },
   addButton: {
     ...touchableOpacityContainer,
     marginTop: 20,
@@ -50,7 +54,6 @@ export default ({
   },
   cardNumberInput: {
     ...textInput,
-    flex: 1,
   },
   cvcContainer: {
     ...cardFieldContainer
@@ -60,7 +63,12 @@ export default ({
   },
   cvcInput: {
     ...textInput,
-    flex: 1,
+  },
+  errorText: {
+    fontSize: 16,
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 16,
   },
   innerTouchableOpacityContainer: innerTouchableOpacityContainer,
   monthYearContainer: {
@@ -69,19 +77,9 @@ export default ({
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: grey,
   },
-  monthTextInput: {
+  monthYearTextInput: {
     ...textInput,
-    width: 46,
-    paddingLeft: 12,
-    paddingRight: 4,
-    textAlign: 'right',
   },
   textInput: textInput,
-  yearTextInput: {
-    ...textInput,
-    width: 40,
-    paddingLeft: 4,
-    paddingRight: 12,
-  }
 
 })
