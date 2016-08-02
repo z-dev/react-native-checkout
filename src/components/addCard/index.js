@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ActivityIndicator, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
+import { formatMonthYearExpiry } from '../../common/cardFormatting'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 import _ from 'lodash'
 
@@ -38,12 +39,7 @@ export default class AddCard extends Component {
             keyboardType="numeric"
             style={styles.monthYearTextInput}
             onChangeText={(expiry) => {
-              let newExpiry = expiry
-              if (_.size(expiry) === 2 && _.size(this.state.expiry) !== 3) {
-                newExpiry = `${expiry}/`
-              } else if (_.size(expiry) === 3 && _.size(this.state.expiry) === 4) {
-                newExpiry = expiry.substring(0, 2)
-              }
+              const newExpiry = formatMonthYearExpiry(expiry, this.state.expiry)
               this.setState({ expiry: newExpiry })
               if (_.size(newExpiry) === 5) {
                 this.refs.cvcInput.focus()

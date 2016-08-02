@@ -9,4 +9,5 @@ export const StripeAddCard = StripeAddCard1
 export const AddCard = AddCard1
 export const SelectPayment = SelectPayment1
 export const selectPaymentDefaultStyles = selectPaymentDefaultStyles1
+export const addCardDefaultStyles = addCardDefaultStyles1
 export const CardBrandImage = CardBrandImage1

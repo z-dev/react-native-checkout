@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import TouchableOpacity from '../common/touchableOpacity'
-import _ from 'lodash'
 import CardBrandImage from './cardBrandImage'
 export default (props) =>
   <TouchableOpacity {...props} styles={props.styles} onPress={() => props.selectPaymentHandler(props.paymentSource)}>
