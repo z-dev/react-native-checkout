@@ -35,7 +35,7 @@ export default class AddCard extends Component {
         <View style={styles.monthYearContainer}>
           <Image resizeMode="contain" style={styles.cardExpiryImage} source={require('../../../assets/images/card_expiry.png')} />
           <TextInput
-            maxLength={2}
+            maxLength={5}
             keyboardType="numeric"
             style={styles.monthYearTextInput}
             onChangeText={(expiry) => {
