@@ -30,6 +30,8 @@ export default class AddCard extends Component {
             onChangeText={(cardNumber) => this.setState({ cardNumber })}
             value={this.state.cardNumber}
             placeholder="4242424242424242"
+            onFocus={() => this.props.onCardNumberFocus && this.props.onCardNumberFocus(this.state.cardNumber)}
+            onBlur={() => this.props.onCardNumberBlur && this.props.onCardNumberBlur(this.state.cardNumber)}
           />
         </View>
         <View style={styles.monthYearContainer}>
@@ -47,6 +49,8 @@ export default class AddCard extends Component {
             }}
             value={this.state.expiry}
             placeholder="MM/YY"
+            onFocus={() => this.props.onExpiryFocus && this.props.onExpiryFocus(this.state.expiry)}
+            onBlur={() => this.props.onExpiryBlur && this.props.onExpiryBlur(this.state.expiry)}
           />
         </View>
         <View style={styles.cvcContainer}>
@@ -58,6 +62,8 @@ export default class AddCard extends Component {
             onChangeText={(cvc) => this.setState({ cvc })}
             value={this.state.cvc}
             placeholder="CVC"
+            onFocus={() => this.props.onCvcFocus && this.props.onCvcFocus(this.state.cvc)}
+            onBlur={() => this.props.onCvcBlur && this.props.onCvcBlur(this.state.cvc)}
           />
         </View>
         <Text style={styles.errorText}>{this.state.error}</Text>
