@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, View, Image, TextInput, Text } from 'react-native'
+import { ActivityIndicator, KeyboardAvoidingView, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
 import { formatMonthYearExpiry } from '../../common/cardFormatting'
-import KeyboardSpacer from 'react-native-keyboard-spacer'
 import _ from 'lodash'
 
 export default class AddCard extends Component {
@@ -83,10 +82,9 @@ export default class AddCard extends Component {
       </View>
     )
     return (
-      <View style={styles.addCardContainer}>
+      <KeyboardAvoidingView behavior="position" style={styles.addCardContainer}>
         {this.state.addingCard ? <ActivityIndicator size="large" style={styles.activityIndicator} /> : addCardContents}
-        <KeyboardSpacer />
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
