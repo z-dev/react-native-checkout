@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { bold, grey, pressableColor, touchableOpacityContainer, innerTouchableOpacityContainer } from '../../common/styles'
+import { bold, grey, pressableColor, red, touchableOpacityContainer, innerTouchableOpacityContainer } from '../../common/styles'
 
 const textInput = {
   paddingLeft: 12,
@@ -71,6 +71,10 @@ export default ({
     marginTop: 16,
   },
   innerTouchableOpacityContainer: innerTouchableOpacityContainer,
+  invalid: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: red,
+  },
   monthYearContainer: {
     ...cardFieldContainer,
     borderBottomWidth: StyleSheet.hairlineWidth,
@@ -81,5 +85,4 @@ export default ({
     ...textInput,
   },
   textInput: textInput,
-
 })
