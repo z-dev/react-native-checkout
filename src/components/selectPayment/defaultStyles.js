@@ -51,6 +51,9 @@ export default ({
     borderTopWidth: 1,
     borderColor: grey,
   },
+  paymentMethodsInnerViewContainer: {
+
+  },
   selectPaymentContainer: {
     flex: 1,
     backgroundColor: '#F2F2F5',

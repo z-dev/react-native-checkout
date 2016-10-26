@@ -20,24 +20,30 @@ const cardFieldContainer = {
   flex: 1,
   backgroundColor: 'white',
 }
+const button = {
+  ...touchableOpacityContainer,
+  marginTop: 20,
+  marginBottom: 20,
+  borderBottomWidth: 1,
+  borderTopWidth: 1,
+  borderColor: grey,
+}
+
+const buttonText = {
+  color: pressableColor,
+  fontWeight: bold,
+  textAlign: 'center',
+}
 
 export default ({
   activityIndicator: {
-    height: 200,
   },
-  addButton: {
-    ...touchableOpacityContainer,
-    marginTop: 20,
-    marginBottom: 20,
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderColor: grey,
+  activityIndicatorContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
-  addButtonText: {
-    color: pressableColor,
-    fontWeight: bold,
-    textAlign: 'center',
-  },
+  addButton: button,
+  addButtonText: buttonText,
   addCardContainer: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -56,7 +62,9 @@ export default ({
     ...textInput,
   },
   cvcContainer: {
-    ...cardFieldContainer
+    ...cardFieldContainer,
+    borderLeftWidth: StyleSheet.hairlineWidth,
+    borderLeftColor: grey,
   },
   cvcImage: {
     ...cardImage
@@ -64,11 +72,15 @@ export default ({
   cvcInput: {
     ...textInput,
   },
+  errorTextContainer: {
+    height: 71,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   errorText: {
     fontSize: 16,
     color: 'red',
     textAlign: 'center',
-    marginTop: 16,
   },
   innerTouchableOpacityContainer: innerTouchableOpacityContainer,
   invalid: {
@@ -81,8 +93,13 @@ export default ({
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: grey,
   },
+  monthYearCvcContainer: {
+    flexDirection: 'row',
+  },
   monthYearTextInput: {
     ...textInput,
   },
+  scanCardButton: button,
+  scanCardButtonText: buttonText,
   textInput: textInput,
 })
