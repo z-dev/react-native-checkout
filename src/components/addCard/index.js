@@ -81,7 +81,7 @@ export default class AddCard extends Component {
     if (calculatedState.addingCard) {
       return (
         <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator size="large" style={styles.activityIndicator} />
+          <ActivityIndicator color={this.props.activityIndicatorColor} size="large" style={styles.activityIndicator} />
         </View>
       )
     }
