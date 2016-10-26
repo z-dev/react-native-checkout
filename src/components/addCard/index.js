@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, Alert, KeyboardAvoidingView, View, Image, TextInput, Text } from 'react-native'
+import { ActivityIndicator, KeyboardAvoidingView, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
 import ScanCard from '../scanCard'
