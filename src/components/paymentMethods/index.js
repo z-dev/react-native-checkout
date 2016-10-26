@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, View } from 'react-native'
+import { ActivityIndicator, ScrollView, View } from 'react-native'
 import Card from './card'
 import ApplePay from './applePay'
 import _ from 'lodash'
@@ -26,12 +26,14 @@ export default class PaymentMethods extends Component {
   render() {
     return (
       <View style={this.props.styles.paymentMethodsContainer}>
-        <View style={this.props.styles.paymentMethodsInnerContainer}>
-          { this.props.enableApplePay
-            ? <ApplePay styles={this.props.styles} applePayHandler={this.props.applePayHandler} last={_.isEmpty(this.props.paymentSources)} />
-            : null }
-          { this.cards() }
-        </View>
+        <ScrollView automaticallyAdjustContentInsets={false} contentContainerStyle={this.props.styles.paymentMethodsInnerContainer}>
+          <View style={this.props.styles.paymentMethodsInnerViewContainer}>
+            { this.props.enableApplePay
+              ? <ApplePay styles={this.props.styles} applePayHandler={this.props.applePayHandler} last={_.isEmpty(this.props.paymentSources)} />
+              : null }
+            { this.cards() }
+          </View>
+        </ScrollView>
         {!this.props.paymentSources ? <ActivityIndicator style={this.props.styles.cardsLoadingIndicator} /> : null}
       </View>
     )
