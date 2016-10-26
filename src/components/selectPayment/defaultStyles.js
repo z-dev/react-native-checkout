@@ -22,7 +22,8 @@ export default ({
   },
   touchableOpacityContainer: touchableOpacityContainer,
   cardsLoadingIndicator: {
-    marginTop: 20
+    marginBottom: 20,
+    marginTop: 20,
   },
   cardTextLast4: {
     fontWeight: bold

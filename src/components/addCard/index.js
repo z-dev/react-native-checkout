@@ -95,6 +95,7 @@ export default class AddCard extends Component {
           <TextInput
             ref="cardNumberInput"
             keyboardType="numeric"
+            underlineColorAndroid="transparent"
             style={styles.cardNumberInput}
             onChangeText={(rawCardNumber) => {
               const cardNumber = s(rawCardNumber).replaceAll(' ', '').s
@@ -121,6 +122,7 @@ export default class AddCard extends Component {
               ref="expiryInput"
               maxLength={5}
               keyboardType="numeric"
+              underlineColorAndroid="transparent"
               style={styles.monthYearTextInput}
               onChangeText={(expiry) => {
                 const newExpiry = formatMonthYearExpiry(expiry, calculatedState.expiry)
@@ -149,6 +151,7 @@ export default class AddCard extends Component {
             <TextInput
               ref="cvcInput"
               keyboardType="numeric"
+              underlineColorAndroid="transparent"
               style={styles.cvcInput}
               onChangeText={(cvc) => this.setState({ cvc })}
               value={calculatedState.cvc}
