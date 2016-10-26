@@ -2,28 +2,46 @@ import React, { Component } from 'react'
 import { ActivityIndicator, KeyboardAvoidingView, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
+import ScanCard from '../scanCard'
 import { formatMonthYearExpiry } from '../../common/cardFormatting'
 import _ from 'lodash'
+import s from 'string'
 
 export default class AddCard extends Component {
   constructor(props) {
     super(props)
-    this.state = { addingCard: false, cardNumber: '', error: null, expiry: '', cvc: '' }
+    this.state = { addingCard: false, scanningCard: false, hasTriedScan: false, cardNumber: '', error: null, expiry: '', cvc: '' }
   }
 
   componentDidMount() {
-    this.refs.cardNumber.focus()
+    this.refs.cardNumberInput.focus()
   }
 
+  didScanCard(card) {
+    this.setState({
+      scanningCard: false,
+      hasTriedScan: true,
+      cardNumber: card.cardNumber,
+    })
+    const expiryYear = `${card.expiryYear}`
+    if (s(card.expiryMonth).length >= 2 && s(expiryYear).length >= 2) {
+      this.setState({ expiry: `${card.expiryMonth}/${expiryYear.slice(-2)}` })
+      this.refs.cvcInput.focus()
+    } else {
+      this.refs.expiryInput.focus()
+    }
+  }
   render() {
     const styles = _.merge({}, defaultStyles, this.props.styles)
-
+    if (this.state.scanningCard) {
+      return <ScanCard didScanCard={(card) => this.didScanCard(card)} />
+    }
     const addCardContents = (
       <View>
         <View style={styles.cardNumberContainer}>
           <Image resizeMode="contain" style={styles.cardNumberImage} source={require('../../../assets/images/card_front.png')} />
           <TextInput
-            ref="cardNumber"
+            ref="cardNumberInput"
             keyboardType="numeric"
             style={styles.cardNumberInput}
             onChangeText={(cardNumber) => this.setState({ cardNumber })}
@@ -36,6 +54,7 @@ export default class AddCard extends Component {
         <View style={styles.monthYearContainer}>
           <Image resizeMode="contain" style={styles.cardExpiryImage} source={require('../../../assets/images/card_expiry.png')} />
           <TextInput
+            ref="expiryInput"
             maxLength={5}
             keyboardType="numeric"
             style={styles.monthYearTextInput}
@@ -66,19 +85,29 @@ export default class AddCard extends Component {
           />
         </View>
         <Text style={styles.errorText}>{this.state.error}</Text>
-          <TouchableOpacity
-            style={styles.addButton}
-            styles={styles}
-            onPress={() => {
-              this.setState({ addingCard: true })
-              this.props.addCardHandler(this.state.cardNumber, this.state.expiry, this.state.cvc)
-                .then(() => this.setState({ addingCard: false }))
-                .catch((error) => this.setState({ error: error.message, addingCard: false }))
-            }}
-            last
-          >
-            <Text style={styles.addButtonText}>Add Card</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.addButton}
+          styles={styles}
+          onPress={() => {
+            this.setState({ scanningCard: true })
+          }}
+          last
+        >
+          <Text style={styles.addButtonText}>{this.state.hasTriedScan ? 'Scan Again' : 'Scan Card'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.addButton}
+          styles={styles}
+          onPress={() => {
+            this.setState({ addingCard: true })
+            this.props.addCardHandler(this.state.cardNumber, this.state.expiry, this.state.cvc)
+              .then(() => this.setState({ addingCard: false }))
+              .catch((error) => this.setState({ error: error.message, addingCard: false }))
+          }}
+          last
+        >
+          <Text style={styles.addButtonText}>Add Card</Text>
+        </TouchableOpacity>
       </View>
     )
     return (
