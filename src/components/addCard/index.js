@@ -7,6 +7,7 @@ import { formatMonthYearExpiry } from '../../common/cardFormatting'
 import _ from 'lodash'
 import s from 'string'
 import payment from 'payment'
+import { CardIOUtilities } from 'react-native-awesome-card-io'
 
 export default class AddCard extends Component {
   constructor(props) {
@@ -21,6 +22,10 @@ export default class AddCard extends Component {
       expiry: '',
       cvc: ''
     }
+  }
+
+  componentWillMount() {
+    CardIOUtilities.preload()
   }
 
   componentDidMount() {
@@ -86,7 +91,7 @@ export default class AddCard extends Component {
       )
     }
     if (calculatedState.scanningCard) {
-      return <ScanCard didScanCard={(card) => this.didScanCard(card)} />
+      return <ScanCard scanCardGuideColor={this.props.scanCardGuideColor} didScanCard={(card) => this.didScanCard(card)} />
     }
     const addCardContents = (
       <View>

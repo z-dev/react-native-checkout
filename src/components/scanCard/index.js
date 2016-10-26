@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import { CardIOView, CardIOUtilities } from 'react-native-awesome-card-io'
+import { CardIOView } from 'react-native-awesome-card-io'
 
 export default class ScanCard extends Component {
-  componentWillMount() {
-    CardIOUtilities.preload()
-  }
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -13,7 +10,7 @@ export default class ScanCard extends Component {
           didScanCard={this.props.didScanCard}
           expiry
           hideCardIOLogo
-          guideColor={'orange'}
+          guideColor={this.props.scanCardGuideColor}
           style={{ flex: 1 }}
         />
       </View>
