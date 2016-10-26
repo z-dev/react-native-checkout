@@ -174,7 +174,9 @@ export default class AddCard extends Component {
           }}
           last
         >
-          <Text style={styles.scanCardButtonText}>{calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText || 'Scan Again' : this.props.scanCardButtonText || 'Scan Card'}</Text>
+          <Text style={styles.scanCardButtonText}>
+            {calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText || 'Scan Again' : this.props.scanCardButtonText || 'Scan Card'}
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.addButton}
