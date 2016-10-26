@@ -43,11 +43,20 @@ export default class AddCard extends Component {
     }
   }
 
+  isCardNumberValid() {
+    return payment.fns.validateCardNumber(this.state.cardNumber)
+  }
+  isExpiryValid() {
+    return payment.fns.validateCardExpiry(this.state.expiry)
+  }
+  isCvcValid() {
+    return payment.fns.validateCardCVC(this.state.cvc)
+  }
 
   calculatedState() {
-    const cardNumberShowError = this.state.cardNumberDirty && !payment.fns.validateCardNumber(this.state.cardNumber)
-    const expiryShowError = this.state.expiryDirty && !payment.fns.validateCardExpiry(this.state.expiry)
-    const cvcShowError = this.state.cvcDirty && !payment.fns.validateCardCVC(this.state.cvc)
+    const cardNumberShowError = this.state.cardNumberDirty && !this.isCardNumberValid()
+    const expiryShowError = this.state.expiryDirty && !this.isExpiryValid()
+    const cvcShowError = this.state.cvcDirty && !this.isCvcValid()
     let error = ''
     if (cardNumberShowError) {
       error = 'Card Number is incorrect'
@@ -80,7 +89,13 @@ export default class AddCard extends Component {
             ref="cardNumberInput"
             keyboardType="numeric"
             style={styles.cardNumberInput}
-            onChangeText={(cardNumber) => this.setState({ cardNumber: s(cardNumber).replaceAll(' ', '').s })}
+            onChangeText={(rawCardNumber) => {
+              const cardNumber = s(rawCardNumber).replaceAll(' ', '').s
+              this.setState({ cardNumber: cardNumber })
+              if (payment.fns.validateCardNumber(cardNumber)) {
+                this.refs.expiryInput.focus()
+              }
+            }}
             value={calculatedState.cardNumberFormatted}
             placeholder="4242 4242 4242 4242"
             onFocus={() => this.props.onCardNumberFocus && this.props.onCardNumberFocus(calculatedState.cardNumber)}
@@ -103,7 +118,11 @@ export default class AddCard extends Component {
               const newExpiry = formatMonthYearExpiry(expiry, calculatedState.expiry)
               this.setState({ expiry: newExpiry })
               if (_.size(newExpiry) === 5) {
-                this.refs.cvcInput.focus()
+                if (payment.fns.validateCardExpiry(newExpiry)) {
+                  this.refs.cvcInput.focus()
+                } else {
+                  this.setState({ expiryDirty: true })
+                }
               }
             }}
             value={calculatedState.expiry}
