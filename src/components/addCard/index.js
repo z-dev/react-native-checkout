@@ -35,6 +35,9 @@ export default class AddCard extends Component {
   }
 
   didScanCard(card) {
+    if (this.props.onScanCardClose) {
+      this.props.onScanCardClose()
+    }
     this.setState({
       scanningCard: false,
       hasTriedScan: true,
@@ -180,6 +183,9 @@ export default class AddCard extends Component {
           style={styles.scanCardButton}
           styles={styles}
           onPress={() => {
+            if (this.props.onScanCardOpen) {
+              this.props.onScanCardOpen()
+            }
             this.setState({ scanningCard: true })
           }}
           last
