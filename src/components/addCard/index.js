@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, KeyboardAvoidingView, View, Image, TextInput, Text } from 'react-native'
+import { ActivityIndicator, KeyboardAvoidingView, Platform, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
 import ScanCard from '../scanCard'
@@ -25,7 +25,9 @@ export default class AddCard extends Component {
   }
 
   componentWillMount() {
-    CardIOUtilities.preload()
+    if (CardIOUtilities.preload) {
+      CardIOUtilities.preload()
+    }
   }
 
   componentDidMount() {
@@ -205,7 +207,7 @@ export default class AddCard extends Component {
       </View>
     )
     return (
-      <KeyboardAvoidingView behavior="position" style={styles.addCardContainer}>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={Platform.OS === 'android' ? 24 : 0} style={[styles.addCardContainer, this.props.style]}>
         {addCardContents}
       </KeyboardAvoidingView>
     )
