@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, KeyboardAvoidingView, View, Image, TextInput, Text } from 'react-native'
+import { ActivityIndicator, KeyboardAvoidingView, Platform, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
 import ScanCard from '../scanCard'
@@ -7,6 +7,7 @@ import { formatMonthYearExpiry } from '../../common/cardFormatting'
 import _ from 'lodash'
 import s from 'string'
 import payment from 'payment'
+import { CardIOUtilities } from 'react-native-awesome-card-io'
 
 export default class AddCard extends Component {
   constructor(props) {
@@ -20,6 +21,12 @@ export default class AddCard extends Component {
       error: null,
       expiry: '',
       cvc: ''
+    }
+  }
+
+  componentWillMount() {
+    if (CardIOUtilities.preload) {
+      CardIOUtilities.preload()
     }
   }
 
@@ -86,7 +93,7 @@ export default class AddCard extends Component {
       )
     }
     if (calculatedState.scanningCard) {
-      return <ScanCard didScanCard={(card) => this.didScanCard(card)} />
+      return <ScanCard scanCardGuideColor={this.props.scanCardGuideColor} didScanCard={(card) => this.didScanCard(card)} />
     }
     const addCardContents = (
       <View>
@@ -200,7 +207,7 @@ export default class AddCard extends Component {
       </View>
     )
     return (
-      <KeyboardAvoidingView behavior="position" style={styles.addCardContainer}>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={Platform.OS === 'android' ? 24 : 0} style={[styles.addCardContainer, this.props.style]}>
         {addCardContents}
       </KeyboardAvoidingView>
     )
