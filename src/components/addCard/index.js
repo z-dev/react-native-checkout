@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, KeyboardAvoidingView, Platform, View, Image, TextInput, Text } from 'react-native'
+import { ActivityIndicator, Platform, View, Image, TextInput, Text } from 'react-native'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
-import ScanCard from '../scanCard'
 import { formatMonthYearExpiry } from '../../common/cardFormatting'
 import _ from 'lodash'
 import s from 'string'
 import payment from 'payment'
-import { CardIOUtilities } from 'react-native-awesome-card-io'
+import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io'
+import ScanCard from '../scanCard'
+import KeyboardSpacer from 'react-native-keyboard-spacer'
 
+const DELAY_FOCUS = Platform.OS === 'android' ? 200 : 0
 export default class AddCard extends Component {
   constructor(props) {
     super(props)
@@ -30,10 +32,6 @@ export default class AddCard extends Component {
     }
   }
 
-  componentDidMount() {
-    this.refs.cardNumberInput.focus()
-  }
-
   didScanCard(card) {
     if (this.props.onScanCardClose) {
       this.props.onScanCardClose()
@@ -47,9 +45,9 @@ export default class AddCard extends Component {
     const expiryYear = `${card.expiryYear}`
     if (s(card.expiryMonth).length >= 2 && s(expiryYear).length >= 2) {
       this.setState({ expiry: `${card.expiryMonth}/${expiryYear.slice(-2)}`, expiryDirty: true })
-      this.refs.cvcInput.focus()
+      _.delay(() => this.refs.cvcInput.focus(), DELAY_FOCUS)
     } else {
-      this.refs.expiryInput.focus()
+      _.delay(() => this.refs.expiryInput.focus(), DELAY_FOCUS)
     }
   }
 
@@ -104,6 +102,7 @@ export default class AddCard extends Component {
           <Image resizeMode="contain" style={styles.cardNumberImage} source={require('../../../assets/images/card_front.png')} />
           <TextInput
             ref="cardNumberInput"
+            autoFocus
             keyboardType="numeric"
             underlineColorAndroid="transparent"
             style={styles.cardNumberInput}
@@ -186,7 +185,31 @@ export default class AddCard extends Component {
             if (this.props.onScanCardOpen) {
               this.props.onScanCardOpen()
             }
-            this.setState({ scanningCard: true })
+            if (Platform.OS === 'android') {
+              CardIOModule.
+                scanCard({
+                  // guideColor: this.props.scanCardGuideColor, // This isn't working at the moment.
+                  hideCardIOLogo: true,
+                  suppressManualEntry: true,
+                  suppressConfirmation: true,
+                })
+                .then((card) => this.didScanCard(card))
+                .catch(() => {
+                  let refToFocus
+                  if (!calculatedState.cardNumber) {
+                    refToFocus = this.refs.cardNumberInput
+                  } else if (!calculatedState.expiry) {
+                    refToFocus = this.refs.expiryInput
+                  } else {
+                    refToFocus = this.refs.cvcInput
+                  }
+                  // Make sure keyboard stays open on android.
+                  _.delay(() => refToFocus.blur(), DELAY_FOCUS / 2)
+                  _.delay(() => refToFocus.focus(), DELAY_FOCUS)
+                })
+            } else {
+              this.setState({ scanningCard: true })
+            }
           }}
           last
         >
@@ -213,9 +236,12 @@ export default class AddCard extends Component {
       </View>
     )
     return (
-      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={Platform.OS === 'android' ? 24 : 0} style={[styles.addCardContainer, this.props.style]}>
-        {addCardContents}
-      </KeyboardAvoidingView>
+      <View style={{ flex: 1 }}>
+        <View style={[styles.addCardContainer, this.props.style]}>
+          {addCardContents}
+        </View>
+        {Platform.OS === 'android' ? null : <KeyboardSpacer /> /* Android takes care of this for us. */}
+      </View>
     )
   }
 }
