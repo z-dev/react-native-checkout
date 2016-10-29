@@ -32,10 +32,11 @@ export default class AddCard extends Component {
     }
   }
 
+  componentDidMount() {
+    this.refs.cardNumberInput.focus()
+  }
+
   didScanCard(card) {
-    if (this.props.onScanCardClose) {
-      this.props.onScanCardClose()
-    }
     this.setState({
       scanningCard: false,
       hasTriedScan: true,
@@ -48,6 +49,9 @@ export default class AddCard extends Component {
       _.delay(() => this.refs.cvcInput.focus(), DELAY_FOCUS)
     } else {
       _.delay(() => this.refs.expiryInput.focus(), DELAY_FOCUS)
+    }
+    if (this.props.onScanCardClose) {
+      this.props.onScanCardClose()
     }
   }
 
@@ -102,7 +106,6 @@ export default class AddCard extends Component {
           <Image resizeMode="contain" style={styles.cardNumberImage} source={require('../../../assets/images/card_front.png')} />
           <TextInput
             ref="cardNumberInput"
-            autoFocus
             keyboardType="numeric"
             underlineColorAndroid="transparent"
             style={styles.cardNumberInput}
