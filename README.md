@@ -4,6 +4,15 @@ React Native component which mimics Stripe's ios component.
 
 For iOS and Android
 
+Note: This plugin is dependent from react-native-awesome-card-io, which you have to install manually and link  
+
+## Installation
+
+```Bash
+$ npm i react-native-stripe-checkout --save
+$ react-native link react-native-awesome-card-io 
+```
+
 ## Usage
 
 ```
@@ -44,7 +53,7 @@ We provide support for the minimal number of fields:
 
 These fields are validated using https://github.com/jessepollak/payment.
 
-![](https://stripe.com/img/documentation/ios/stripe-ios-ui-theming.png)
+![](https://stripe.com/img/documentation/mobile/ios/stripe-ios-ui-theming.png)
 
 Add button goes at the bottom. No nav. No card diagram.
 
