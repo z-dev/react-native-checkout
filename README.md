@@ -24,6 +24,7 @@ Note: This plugin is dependent from react-native-awesome-card-io, which you have
 ## Installation
 
 `yarn add react-native-checkout` or `npm i react-native-checkout --save`
+
 `react-native link react-native-awesome-card-io`
 
 
