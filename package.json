@@ -7,13 +7,13 @@
     "url" : "https://github.com/z-dev/react-native-checkout"
   },
   "dependencies": {
+    "lodash": "^4.14.2",
     "payment": "^2.2.1",
     "react-native-awesome-card-io": "^0.6.1",
     "react-native-keyboard-spacer": "^0.3.0",
     "string": "^3.3.3"
   },
   "peerDependencies": {
-    "lodash": "^4.14.2",
     "react": "~15.4.1",
     "react-native": "^0.42.3"
   },
