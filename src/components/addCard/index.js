@@ -14,7 +14,19 @@ const DELAY_FOCUS = Platform.OS === 'android' ? 200 : 0
 export default class AddCard extends Component {
   static propTypes = {
     addCardHandler: React.PropTypes.func.isRequired,
-
+    onCardNumberBlur: React.PropTypes.func,
+    onCardNumberFocus: React.PropTypes.func,
+    onCvcFocus: React.PropTypes.func,
+    onCvcBlur: React.PropTypes.func,
+    onExpiryBlur: React.PropTypes.func,
+    onExpiryFocus: React.PropTypes.func,
+    onScanCardClose: React.PropTypes.func,
+    onScanCardOpen: React.PropTypes.func,
+    styles: React.PropTypes.object,
+    activityIndicatorColor: React.PropTypes.string,
+    scanCardButtonText: React.PropTypes.string,
+    scanCardAfterScanButtonText: React.PropTypes.string,
+    addCardButtonText: React.PropTypes.string,
   }
 
   constructor(props) {
