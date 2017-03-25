@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
+import _ from 'lodash'
 import PaymentMethods from '../paymentMethods'
 import defaultStyles from './defaultStyles'
 import TouchableOpacity from '../common/touchableOpacity'
-import _ from 'lodash'
 
 export default class SelectPayment extends Component {
   static propTypes = {

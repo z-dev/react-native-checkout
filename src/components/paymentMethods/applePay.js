@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image } from 'react-native'
 import TouchableOpacity from '../common/touchableOpacity'
+import applePay from '../../../assets/images/apple_pay.png'
 
 export default (props) =>
   <TouchableOpacity
@@ -10,5 +11,5 @@ export default (props) =>
     styles={props.styles}
     onPress={() => props.applePayHandler()}
   >
-    <Image source={require('../../../assets/images/apple_pay.png')} />
+    <Image source={applePay} />
   </TouchableOpacity>

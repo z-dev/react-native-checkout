@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { ActivityIndicator, ScrollView, View } from 'react-native'
+import _ from 'lodash'
 import Card from './card'
 import ApplePay from './applePay'
-import _ from 'lodash'
 
 export default class PaymentMethods extends Component {
   cards() {

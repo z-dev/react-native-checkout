@@ -1,12 +1,21 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-
-  "plugins": [
-     "import",
-  ],
-
   "rules": {
+    indent: ['error', 2, {
+      SwitchCase: 1,
+      VariableDeclarator: 1,
+      outerIIFEBody: 1,
+      MemberExpression: 1,
+      FunctionDeclaration: {
+        parameters: 1,
+        body: 1
+      },
+      FunctionExpression: {
+        parameters: 1,
+        body: 1
+      }
+    }],
     arrow-body-style: [0],
     comma-dangle: [0, "never"],
     import/no-unresolved: [0],
@@ -20,14 +29,19 @@
     strict: [2, "never"],
     react/prop-types: [0],
     max-len: [2, 180, 4],
-    react/prefer-stateless-function: [0]
+    react/prefer-stateless-function: [0],
+    react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }],
+    arrow-parens: [2, "always"],
+    import/prefer-default-export: [0],
+    import/no-named-as-default: [0],
+    react/no-string-refs: [0],
+    no-mixed-operators: [0],
+    no-confusing-arrow: [0],
+    import/extensions: [0], // This seems broken
+    react/forbid-prop-types: [2, { "forbid": ["any"] }],
+    react/require-default-props: [0]
   },
-  "settings": {
-    import/parser: "babel-eslint"
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-    }
-  },
+  "globals": {
+    "fetch": false,
+  }
 }

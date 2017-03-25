@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import TouchableOpacity from '../common/touchableOpacity'
 import CardBrandImage from './cardBrandImage'
+
 export default (props) =>
   <TouchableOpacity {...props} styles={props.styles} style={props.styles.cardTextOuterContainer} onPress={() => props.selectPaymentHandler(props.paymentSource)}>
     <View style={props.styles.cardTextContainer}>
