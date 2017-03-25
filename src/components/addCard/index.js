@@ -1,17 +1,44 @@
 import React, { Component } from 'react'
 import { ActivityIndicator, Platform, View, Image, TextInput, Text } from 'react-native'
-import defaultStyles from './defaultStyles.js'
-import TouchableOpacity from '../common/touchableOpacity'
-import { formatMonthYearExpiry } from '../../common/cardFormatting'
 import _ from 'lodash'
 import s from 'string'
 import payment from 'payment'
-import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io'
-import ScanCard from '../scanCard'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
+import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io'
+import defaultStyles from './defaultStyles.js'
+import TouchableOpacity from '../common/touchableOpacity'
+import { formatMonthYearExpiry } from '../../common/cardFormatting'
+import ScanCard from '../scanCard'
+import cardFront from '../../../assets/images/card_front.png'
+import cardExpiry from '../../../assets/images/card_expiry.png'
+import cardCvc from '../../../assets/images/card_cvc.png'
 
 const DELAY_FOCUS = Platform.OS === 'android' ? 200 : 0
 export default class AddCard extends Component {
+  static propTypes = {
+    addCardHandler: React.PropTypes.func.isRequired,
+    onCardNumberBlur: React.PropTypes.func,
+    onCardNumberFocus: React.PropTypes.func,
+    onCvcFocus: React.PropTypes.func,
+    onCvcBlur: React.PropTypes.func,
+    onExpiryBlur: React.PropTypes.func,
+    onExpiryFocus: React.PropTypes.func,
+    onScanCardClose: React.PropTypes.func,
+    onScanCardOpen: React.PropTypes.func,
+    styles: React.PropTypes.object,
+    activityIndicatorColor: React.PropTypes.string,
+    scanCardButtonText: React.PropTypes.string,
+    scanCardAfterScanButtonText: React.PropTypes.string,
+    addCardButtonText: React.PropTypes.string,
+  }
+
+  static defaultProps = {
+    activityIndicatorColor: 'black',
+    addCardButtonText: 'Add Card',
+    scanCardAfterScanButtonText: 'Scan Again',
+    scanCardButtonText: 'Scan Card',
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -103,7 +130,7 @@ export default class AddCard extends Component {
     const addCardContents = (
       <View>
         <View style={[styles.cardNumberContainer, calculatedState.cardNumberShowError && styles.invalid]}>
-          <Image resizeMode="contain" style={styles.cardNumberImage} source={require('../../../assets/images/card_front.png')} />
+          <Image resizeMode="contain" style={styles.cardNumberImage} source={cardFront} />
           <TextInput
             ref="cardNumberInput"
             keyboardType="numeric"
@@ -129,7 +156,7 @@ export default class AddCard extends Component {
         </View>
         <View style={styles.monthYearCvcContainer}>
           <View style={[styles.monthYearContainer, calculatedState.expiryShowError && styles.invalid]}>
-            <Image resizeMode="contain" style={styles.cardExpiryImage} source={require('../../../assets/images/card_expiry.png')} />
+            <Image resizeMode="contain" style={styles.cardExpiryImage} source={cardExpiry} />
             <TextInput
               ref="expiryInput"
               maxLength={5}
@@ -159,7 +186,7 @@ export default class AddCard extends Component {
             />
           </View>
           <View style={[styles.cvcContainer, calculatedState.cvcShowError && styles.invalid]}>
-            <Image resizeMode="contain" style={styles.cvcImage} source={require('../../../assets/images/card_cvc.png')} />
+            <Image resizeMode="contain" style={styles.cvcImage} source={cardCvc} />
             <TextInput
               ref="cvcInput"
               keyboardType="numeric"
@@ -189,8 +216,8 @@ export default class AddCard extends Component {
               this.props.onScanCardOpen()
             }
             if (Platform.OS === 'android') {
-              CardIOModule.
-                scanCard({
+              CardIOModule
+                .scanCard({
                   // guideColor: this.props.scanCardGuideColor, // This isn't working at the moment.
                   hideCardIOLogo: true,
                   suppressManualEntry: true,
@@ -217,7 +244,7 @@ export default class AddCard extends Component {
           last
         >
           <Text style={styles.scanCardButtonText}>
-            {calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText || 'Scan Again' : this.props.scanCardButtonText || 'Scan Card'}
+            {calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText : this.props.scanCardButtonText}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -234,7 +261,7 @@ export default class AddCard extends Component {
           }}
           last
         >
-          <Text style={styles.addButtonText}>{this.props.addCardButtonText || 'Add Card'}</Text>
+          <Text style={styles.addButtonText}>{this.props.addCardButtonText}</Text>
         </TouchableOpacity>
       </View>
     )

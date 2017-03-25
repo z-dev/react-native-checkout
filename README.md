@@ -1,69 +1,103 @@
-# react-native-stripe-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-stripe-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-stripe-checkout)
+# react-native-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-checkout) [![npm version](https://badge.fury.io/js/react-native-checkout.svg)](https://badge.fury.io/js/react-native-checkout)
 
-React Native component which mimics Stripe's ios component.
+React Native Checkout
+
+Handles:
+
+* Adding Cards
+  * Validates card numbers, expiries and cvcs (using [payment package](https://github.com/jessepollak/payment))
+  * Scan cards using card.io
+
+* Selecting Cards
+  * Lists cards
+  * Shows Apple Pay option if enabled
+
+* Stripe
+  * Automatically add cards to stripe
+
+Everything was designed with Stripe in mind, should also work with other payment gateways.
 
 For iOS and Android
 
-Note: This plugin is dependent from react-native-awesome-card-io, which you have to install manually and link  
+Note: This plugin is dependent from react-native-awesome-card-io, which you have to install manually and link
 
 ## Installation
 
-```Bash
-$ npm i react-native-stripe-checkout --save
-$ react-native link react-native-awesome-card-io 
-```
+`yarn add react-native-checkout` or `npm i react-native-checkout --save`
+
+`react-native link react-native-awesome-card-io`
+
 
 ## Usage
 
+See our [full example](https://github.com/z-dev/react-native-checkout-example) for more details.
+
+### Adding Cards
+
+![](https://media.giphy.com/media/l4FGDkIm9QzGEJzMY/giphy.gif)
 ```
+  import { AddCard } from 'react-native-stripe-checkout'
+  <AddCard
+    addCardHandler={(cardNumber, cardExpiry, cardCvc) => {
+      console.log(`${cardNumber} ${cardExpiry} ${cardCvc}`)
+      return Promise.resolve(cardNumber) //return a promise when you're done
+    }}
+    styles={{}} // Override default styles
+    onCardNumberBlur={() => console.log('card number blurred')}
+    onCardNumberFocus={() => console.log('card number focused')}
+    onCvcFocus={() => console.log('cvc focused')}
+    onCvcBlur={() => console.log('cvc blurred')}
+    onExpiryFocus={() => console.log('expiry focused')}
+    onExpiryBlur={() => console.log('expiry blurred')}
+    onScanCardClose={() => console.log('scan card closed')}
+    onScanCardOpen={() => console.log('scan card opened')}
+    activityIndicatorColor="pink"
+    addCardButtonText="Add Card"
+    scanCardButtonText="Scan Card"
+    scanCardAfterScanButtonText="Scan Card Again"
+  />
+```
+
+#### Custom styling
+
+You can merge in your own styles. See the [default styles](src/components/addCard/defaultStyles.js) for details.
+
+### Select Payment Method
+[![Screen Shot 2017-03-25 at 14.23.52.png](https://s24.postimg.org/5ukrsfl8l/Screen_Shot_2017-03-25_at_14.23.52.png)](https://postimg.org/image/ilyxyxv0h/)
+
+```
+  import { SelectPayment } from 'react-native-stripe-checkout'
+
   <SelectPayment
     enableApplePay={true} // optional, default: false
-    applePayHandler={() => console.log('apple pay is go')} // optional, mandatory if enableApplePay={true}
-    paymentSources={[{}]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for exact format.
+    applePayHandler={() => console.log('apple pay happened')} // optional
+    paymentSources={[
+      {last4: '1234', brand: 'American Express', more: 'stuff' },
+      {last4: '2345', brand: 'Visa', more: 'stuff' },
+      {last4: '2345', brand: 'Master Card', more: 'stuff' },
+    ]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for Stripe format.
+    addCardHandler={() => console.log('Add Card Pressed!')}
     selectPaymentHandler={(paymentSource) => console.log(paymentSource)}
-    fontFamily="" // Optional, Default: iOS default
-    fontSize={16} // Optional, Default: iOS default
-    //more custom styles
-
+    styles={{}} // Override default styles
   />
 
-  <AddCard
-    createCardHandler={(cardDetails) => console.log(cardDetails)}
-    invalidStyle={{borderColor: 'red'}} // Optional. Default: {borderColor: 'red'}
-    fontFamily="" // Optional, Default: iOS default
-    fontSize={16} // Optional, Default: iOS default
+```
+#### Custom styling
+
+You can merge in your own styles. See the [default styles](src/components/selectPayment/defaultStyles.js) for details.
+
+### Adding cards to Stripe
+
+Automatically adds cards to stripe
+
+```
+  import { StripeAddCard } from 'react-native-stripe-checkout'
+
+ <StripeAddCard
+    publicStripeKey="yourKey"
+    addCardTokenHandler={(stripeCardToken) => {
+      console.log(stripeCardToken)
+    }}
+    {/* Other props from AddCard */ }
   />
 ```
-
-## Selecting a payment method
-
-When the component is rendered it shows the user their existing cards.
-
-![](https://stripe.com/img/blog/posts/ui-components-for-ios/wallet@2x.png)
-No Nav. No card picture. Apple pay present if it exists. Simple Add button at bottom. Tapping a payment option, fires `selectPaymentMethod`
-
-## Adding a card
-
-We provide support for the minimal number of fields:
-
-* Card Number
-* Expiry Month
-* Expiry Year
-* CVC
-
-These fields are validated using https://github.com/jessepollak/payment.
-
-![](https://stripe.com/img/documentation/mobile/ios/stripe-ios-ui-theming.png)
-
-Add button goes at the bottom. No nav. No card diagram.
-
-## Apple pay / Android Wallet
-
-Neither are directly supported. We have a button, which can be enabled / disabled with `enableApplePay` and a handler `applePayHandler` which is called when it is pressed.
-
-
-## Notes
-
-Create card fields: We care about mandatory ones only: https://stripe.com/docs/api#create_card_token cvc, number, exp_year, exp_year
-
-Prop types to check types / mandatory fields

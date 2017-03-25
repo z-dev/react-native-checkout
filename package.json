@@ -1,40 +1,50 @@
 {
-  "name": "react-native-payment-cards",
-  "version": "0.0.10",
+  "name": "react-native-checkout",
+  "version": "0.0.5",
+  "license": "MIT",
+  "description": "Cross Platform React Native component. Supports selecting payment method, adding cards manually and using the camera.",
+  "keywords": [
+    "react-native",
+    "react",
+    "checkout",
+    "payment",
+    "stripe",
+    "native",
+    "form"
+  ],
   "private": false,
   "main": "src/index.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/z-dev/react-native-checkout"
+  },
   "dependencies": {
-    "babel-preset-react-native-stage-0": "^1.0.1",
-    "react-native-awesome-card-io": "^0.4.0",
+    "lodash": "^4.14.2",
+    "payment": "^2.2.1",
+    "react-native-awesome-card-io": "^0.6.1",
     "react-native-keyboard-spacer": "^0.3.0",
-    "payment": "^2.1.3",
     "string": "^3.3.3"
   },
   "peerDependencies": {
-    "react-native": "^0.35.0",
-    "lodash": "^4.14.2",
-    "react": "~15.3.0"
+    "react": "~15.4.1",
+    "react-native": "^0.42.3"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.0",
-    "babel-plugin-transform-class-properties": "^6.5.2",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-es2015": "^6.3.13",
+    "babel-eslint": "^7.2.1",
     "babel-preset-react-native": "^1.5.3",
-    "babel-preset-stage-1": "^6.3.13",
-    "eslint": "^2.7.0",
-    "eslint-config-airbnb": "^7.0.0",
-    "eslint-plugin-import": "^1.2.0",
-    "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^4.3.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-react-native": "^2.3.1",
     "estraverse-fb": "^1.3.1",
     "nodemon": "^1.9.1",
-    "react-native-cli": "^0.1.10"
+    "react-native-cli": "^2.0.1"
   },
   "scripts": {
-    "lint_js": "eslint src --ext=js --ext=jsx",
-    "lint": "npm run lint_js",
-    "lint:watch": "nodemon --exec \"npm run lint\"",
-    "ci": "npm run lint"
+    "lint": "eslint src --ext=js --ext=jsx",
+    "lint:watch": "nodemon --exec \"yarn lint\"",
+    "ci": "yarn lint"
   }
 }
