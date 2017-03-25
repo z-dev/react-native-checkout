@@ -12,6 +12,11 @@ import KeyboardSpacer from 'react-native-keyboard-spacer'
 
 const DELAY_FOCUS = Platform.OS === 'android' ? 200 : 0
 export default class AddCard extends Component {
+  static propTypes = {
+    addCardHandler: React.PropTypes.func.isRequired,
+
+  }
+
   constructor(props) {
     super(props)
     this.state = {
