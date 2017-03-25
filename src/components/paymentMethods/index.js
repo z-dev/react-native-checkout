@@ -10,8 +10,6 @@ export default class PaymentMethods extends Component {
       _.map(this.props.paymentSources, (paymentSource, i) => {
         return (
           <Card
-            last4={paymentSource.last4}
-            brand={paymentSource.brand}
             selectPaymentHandler={() => this.props.selectPaymentHandler(paymentSource)}
             paymentSource={paymentSource}
             styles={this.props.styles}
