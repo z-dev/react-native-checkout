@@ -34,8 +34,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
 
 ### Adding Cards
 
-[![Screen Shot 2017-03-25 at 14.23.52.png](https://s21.postimg.org/evvelfe1j/Screen_Shot_2017-03-25_at_14.23.52.png)]
-
+![](https://media.giphy.com/media/l4FGDkIm9QzGEJzMY/giphy.gif)
 ```
   import { AddCard } from 'react-native-stripe-checkout'
   <AddCard
