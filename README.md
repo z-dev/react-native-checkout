@@ -1,4 +1,4 @@
-# react-native-stripe-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-stripe-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-stripe-checkout)
+# react-native-stripe-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-checkout)
 
 React Native Checkout
 
