@@ -42,7 +42,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
       console.log(`${cardNumber} ${cardExpiry} ${cardCvc}`)
       return Promise.resolve(cardNumber) //return a promise when you're done
     }}
-    styles={{}} // Override default styles <LINK HERE>
+    styles={{}} // Override [default styles](src/components/addCard/defaultStyles.js)
     onCardNumberBlur={() => console.log('card number blurred')}
     onCardNumberFocus={() => console.log('card number focused')}
     onCvcFocus={() => console.log('cvc focused')}
@@ -74,7 +74,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
     ]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for Stripe format.
     addCardHandler={() => console.log('Add Card Pressed!')}
     selectPaymentHandler={(paymentSource) => console.log(paymentSource)}
-    styles={{}} // override default styles <LINK>
+    styles={{}} // override [default styles](src/components/selectPayment/defaultStyles.js)
   />
 
 ```
