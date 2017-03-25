@@ -2,6 +2,10 @@
   "name": "react-native-checkout",
   "version": "0.0.2",
   "private": false,
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/z-dev/react-native-checkout"
+  },
   "dependencies": {
     "payment": "^2.2.1",
     "react-native-awesome-card-io": "^0.6.1",
