@@ -42,7 +42,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
       console.log(`${cardNumber} ${cardExpiry} ${cardCvc}`)
       return Promise.resolve(cardNumber) //return a promise when you're done
     }}
-    styles={{}} // Override [default styles](src/components/addCard/defaultStyles.js)
+    styles={{}} // Override default styles
     onCardNumberBlur={() => console.log('card number blurred')}
     onCardNumberFocus={() => console.log('card number focused')}
     onCvcFocus={() => console.log('cvc focused')}
@@ -57,6 +57,10 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
     scanCardAfterScanButtonText="Scan Card Again"
   />
 ```
+
+#### Custom styling
+
+You can merge in your own styles. See the [default styles](src/components/addCard/defaultStyles.js) for details.
 
 ### Select Payment Method
 [![Screen Shot 2017-03-25 at 14.23.52.png](https://s24.postimg.org/5ukrsfl8l/Screen_Shot_2017-03-25_at_14.23.52.png)](https://postimg.org/image/ilyxyxv0h/)
@@ -74,10 +78,13 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
     ]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for Stripe format.
     addCardHandler={() => console.log('Add Card Pressed!')}
     selectPaymentHandler={(paymentSource) => console.log(paymentSource)}
-    styles={{}} // override [default styles](src/components/selectPayment/defaultStyles.js)
+    styles={{}} // Override default styles
   />
 
 ```
+#### Custom styling
+
+You can merge in your own styles. See the [default styles](src/components/selectPayment/defaultStyles.js) for details.
 
 ### Adding cards to Stripe
 
