@@ -1,6 +1,6 @@
 {
   "name": "react-native-checkout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "dependencies": {
     "payment": "^2.2.1",
