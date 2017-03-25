@@ -29,6 +29,12 @@ export default class AddCard extends Component {
     addCardButtonText: React.PropTypes.string,
   }
 
+  static defaultProps = {
+    addCardButtonText: 'Add Card',
+    scanCardAfterScanButtonText: 'Scan Again',
+    scanCardButtonText: 'Scan Card',
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -234,7 +240,7 @@ export default class AddCard extends Component {
           last
         >
           <Text style={styles.scanCardButtonText}>
-            {calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText || 'Scan Again' : this.props.scanCardButtonText || 'Scan Card'}
+            {calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText : this.props.scanCardButtonText}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -251,7 +257,7 @@ export default class AddCard extends Component {
           }}
           last
         >
-          <Text style={styles.addButtonText}>{this.props.addCardButtonText || 'Add Card'}</Text>
+          <Text style={styles.addButtonText}>{this.props.addCardButtonText}</Text>
         </TouchableOpacity>
       </View>
     )
