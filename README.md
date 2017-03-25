@@ -9,10 +9,13 @@ Handles:
   * Scan cards using card.io
 
 * Selecting Cards
-  *
+  * Lists cards
+  * Shows Apple Pay option if enabled
 
-* Works with Stripe
+* Stripe
+  * Automatically add cards to stripe
 
+Everything was designed with Stripe in mind, should also work with other payment gateways.
 
 For iOS and Android
 
@@ -21,7 +24,7 @@ Note: This plugin is dependent from react-native-awesome-card-io, which you have
 ## Installation
 
 ```Bash
-$ npm i react-native-stripe-checkout --save
+$ yarn add react-native-stripe-checkout or npm i react-native-stripe-checkout --save
 $ react-native link react-native-awesome-card-io
 ```
 
@@ -30,6 +33,7 @@ $ react-native link react-native-awesome-card-io
 ### Adding Cards
 
 ```
+  import { AddCard } from 'react-native-stripe-checkout'
   <AddCard
     addCardHandler={(cardNumber, cardExpiry, cardCvc) => {
       console.log(`${cardNumber} ${cardExpiry} ${cardCvc}`)
@@ -53,23 +57,35 @@ $ react-native link react-native-awesome-card-io
 
 ### Select Payment Method
 ```
+  import { SelectPayment } from 'react-native-stripe-checkout'
+
   <SelectPayment
     enableApplePay={true} // optional, default: false
-    applePayHandler={() => console.log('apple pay is go')} // optional, mandatory if enableApplePay={true}
-    paymentSources={[{}]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for exact format.
+    applePayHandler={() => console.log('apple pay happened')} // optional
+    paymentSources={[
+      {last4: '1234', brand: 'American Express', more: 'stuff' },
+      {last4: '2345', brand: 'Visa', more: 'stuff' },
+      {last4: '2345', brand: 'Master Card', more: 'stuff' },
+    ]} // mandatory, See: [Customer Object](https://stripe.com/docs/api/node#customer_object) -> sources -> data for Stripe format.
+    addCardHandler={() => console.log('Add Card Pressed!')}
     selectPaymentHandler={(paymentSource) => console.log(paymentSource)}
-    fontFamily="" // Optional, Default: iOS default
-    fontSize={16} // Optional, Default: iOS default
-    //more custom styles
-
+    styles={{}} // override default styles <LINK>
   />
 
 ```
 
-## Selecting a payment method
+### Adding cards to Stripe
 
-When the component is rendered it shows the user their existing cards.
+Automatically adds cards to stripe
 
-![](https://stripe.com/img/blog/posts/ui-components-for-ios/wallet@2x.png)
-No Nav. No card picture. Apple pay present if it exists. Simple Add button at bottom. Tapping a payment option, fires `selectPaymentMethod`
+```
+  import { StripeAddCard } from 'react-native-stripe-checkout'
 
+ <StripeAddCard
+    publicStripeKey="yourKey"
+    addCardTokenHandler={(stripeCardToken) => {
+      console.log(stripeCardToken)
+    }}
+    {/* Other props from AddCard */ }
+  />
+```

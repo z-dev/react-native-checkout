@@ -5,6 +5,11 @@ import AddCard from '../addCard'
 
 export default class StripeAddCard extends Component {
 
+  static propTypes = {
+    publicStripeKey: React.PropTypes.string.isRequired,
+    addCardTokenHandler: React.PropTypes.func.isRequired,
+  }
+
   render() {
     return (
       <AddCard
