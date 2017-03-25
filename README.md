@@ -1,20 +1,57 @@
 # react-native-stripe-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-stripe-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-stripe-checkout)
 
-React Native component which mimics Stripe's ios component.
+React Native Checkout component.
+
+Handles:
+
+* Adding Cards
+  * Validates card numbers, expiries and cvcs (using [payment package](https://github.com/jessepollak/payment))
+  * Scan cards using card.io
+
+* Selecting Cards
+  *
+
+* Works with Stripe
+
 
 For iOS and Android
 
-Note: This plugin is dependent from react-native-awesome-card-io, which you have to install manually and link  
+Note: This plugin is dependent from react-native-awesome-card-io, which you have to install manually and link
 
 ## Installation
 
 ```Bash
 $ npm i react-native-stripe-checkout --save
-$ react-native link react-native-awesome-card-io 
+$ react-native link react-native-awesome-card-io
 ```
 
 ## Usage
 
+### Adding Cards
+
+```
+  <AddCard
+    addCardHandler={(cardNumber, cardExpiry, cardCvc) => {
+      console.log(`${cardNumber} ${cardExpiry} ${cardCvc}`)
+      return Promise.resolve(cardNumber) //return a promise when you're done
+    }}
+    styles={{}} // Override default styles <LINK HERE>
+    onCardNumberBlur={() => console.log('card number blurred')}
+    onCardNumberFocus={() => console.log('card number focused')}
+    onCvcFocus={() => console.log('cvc focused')}
+    onCvcBlur={() => console.log('cvc blurred')}
+    onExpiryFocus={() => console.log('expiry focused')}
+    onExpiryBlur={() => console.log('expiry blurred')}
+    onScanCardClose={() => console.log('scan card closed')}
+    onScanCardOpen={() => console.log('scan card opened')}
+    activityIndicatorColor="pink"
+    addCardButtonText="Add Card"
+    scanCardButtonText="Scan Card"
+    scanCardAfterScanButtonText="Scan Card Again"
+  />
+```
+
+### Select Payment Method
 ```
   <SelectPayment
     enableApplePay={true} // optional, default: false
@@ -27,12 +64,6 @@ $ react-native link react-native-awesome-card-io
 
   />
 
-  <AddCard
-    createCardHandler={(cardDetails) => console.log(cardDetails)}
-    invalidStyle={{borderColor: 'red'}} // Optional. Default: {borderColor: 'red'}
-    fontFamily="" // Optional, Default: iOS default
-    fontSize={16} // Optional, Default: iOS default
-  />
 ```
 
 ## Selecting a payment method
@@ -42,28 +73,3 @@ When the component is rendered it shows the user their existing cards.
 ![](https://stripe.com/img/blog/posts/ui-components-for-ios/wallet@2x.png)
 No Nav. No card picture. Apple pay present if it exists. Simple Add button at bottom. Tapping a payment option, fires `selectPaymentMethod`
 
-## Adding a card
-
-We provide support for the minimal number of fields:
-
-* Card Number
-* Expiry Month
-* Expiry Year
-* CVC
-
-These fields are validated using https://github.com/jessepollak/payment.
-
-![](https://stripe.com/img/documentation/mobile/ios/stripe-ios-ui-theming.png)
-
-Add button goes at the bottom. No nav. No card diagram.
-
-## Apple pay / Android Wallet
-
-Neither are directly supported. We have a button, which can be enabled / disabled with `enableApplePay` and a handler `applePayHandler` which is called when it is pressed.
-
-
-## Notes
-
-Create card fields: We care about mandatory ones only: https://stripe.com/docs/api#create_card_token cvc, number, exp_year, exp_year
-
-Prop types to check types / mandatory fields
