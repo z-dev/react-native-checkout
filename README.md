@@ -60,8 +60,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
 ```
 
 ### Select Payment Method
-
-![](http://i.imgur.com/XlCfbUO.png)
+[![Screen Shot 2017-03-25 at 14.23.52.png](https://s24.postimg.org/5ukrsfl8l/Screen_Shot_2017-03-25_at_14.23.52.png)](https://postimg.org/image/ilyxyxv0h/)
 
 ```
   import { SelectPayment } from 'react-native-stripe-checkout'
