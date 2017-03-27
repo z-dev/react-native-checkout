@@ -2,8 +2,10 @@
 
 Checkout component with validation for React Native (iOS and Android). Supports Stripe, Apple Pay.
 
+## Add Cards
 ![](https://media.giphy.com/media/l4FGDkIm9QzGEJzMY/giphy.gif)
 
+## Select Payment Method
 [![Screen Shot 2017-03-25 at 14.23.52.png](https://s24.postimg.org/5ukrsfl8l/Screen_Shot_2017-03-25_at_14.23.52.png)](https://postimg.org/image/ilyxyxv0h/)
 
 Everything was designed with Stripe in mind, should also work with other payment gateways.
