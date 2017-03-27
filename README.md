@@ -1,6 +1,6 @@
 # react-native-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-checkout) [![npm version](https://badge.fury.io/js/react-native-checkout.svg)](https://badge.fury.io/js/react-native-checkout)
 
-Checkout component with validation for React Native (iOS and Android). Supports Stripe, Apple Pay.
+Checkout component with validation for React Native (iOS and Android). Supports Stripe, Apple Pay. You can override the entire style for the components.
 
 #### Add Cards
 ![](https://media.giphy.com/media/l4FGDkIm9QzGEJzMY/giphy.gif)
