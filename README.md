@@ -1,32 +1,18 @@
 # react-native-checkout [![CircleCI](https://circleci.com/gh/z-dev/react-native-checkout.svg?style=svg)](https://circleci.com/gh/z-dev/react-native-checkout) [![npm version](https://badge.fury.io/js/react-native-checkout.svg)](https://badge.fury.io/js/react-native-checkout)
 
-React Native Checkout
+Checkout component with validation for React Native (iOS and Android). Supports Stripe, Apple Pay.
 
-Handles:
+![](https://media.giphy.com/media/l4FGDkIm9QzGEJzMY/giphy.gif)
 
-* Adding Cards
-  * Validates card numbers, expiries and cvcs (using [payment package](https://github.com/jessepollak/payment))
-  * Scan cards using card.io
-
-* Selecting Cards
-  * Lists cards
-  * Shows Apple Pay option if enabled
-
-* Stripe
-  * Automatically add cards to stripe
+[![Screen Shot 2017-03-25 at 14.23.52.png](https://s24.postimg.org/5ukrsfl8l/Screen_Shot_2017-03-25_at_14.23.52.png)](https://postimg.org/image/ilyxyxv0h/)
 
 Everything was designed with Stripe in mind, should also work with other payment gateways.
-
-For iOS and Android
-
-Note: This plugin is dependent from react-native-awesome-card-io, which you have to install manually and link
 
 ## Installation
 
 `yarn add react-native-checkout` or `npm i react-native-checkout --save`
 
-`react-native link react-native-awesome-card-io`
-
+`react-native link react-native-awesome-card-io` <- Scan card functionality
 
 ## Usage
 
@@ -101,3 +87,9 @@ Automatically adds cards to stripe
     {/* Other props from AddCard */ }
   />
 ```
+
+## Inspirations & Thanks
+
+[payment package](https://github.com/jessepollak/payment) provides card validation, which itself was based on the excellent [library by Stripe](https://github.com/stripe/jquery.payment).
+
+Stripe's [iOS library](https://stripe.com/docs/mobile/ios) and [checkout library](https://stripe.com/checkout) 
