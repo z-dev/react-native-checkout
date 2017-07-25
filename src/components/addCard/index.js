@@ -210,45 +210,50 @@ export default class AddCard extends Component {
         <View style={styles.errorTextContainer}>
           <Text style={styles.errorText}>{calculatedState.error}</Text>
         </View>
-        <TouchableOpacity
-          style={styles.scanCardButton}
-          styles={styles}
-          onPress={() => {
-            if (this.props.onScanCardOpen) {
-              this.props.onScanCardOpen()
-            }
-            if (Platform.OS === 'android') {
-              CardIOModule
-                .scanCard({
-                  // guideColor: this.props.scanCardGuideColor, // This isn't working at the moment.
-                  hideCardIOLogo: true,
-                  suppressManualEntry: true,
-                  suppressConfirmation: true,
-                })
-                .then((card) => this.didScanCard(card))
-                .catch(() => {
-                  let refToFocus
-                  if (!calculatedState.cardNumber) {
-                    refToFocus = this.refs.cardNumberInput
-                  } else if (!calculatedState.expiry) {
-                    refToFocus = this.refs.expiryInput
-                  } else {
-                    refToFocus = this.refs.cvcInput
-                  }
-                  // Make sure keyboard stays open on android.
-                  _.delay(() => refToFocus.blur(), DELAY_FOCUS / 2)
-                  _.delay(() => refToFocus.focus(), DELAY_FOCUS)
-                })
-            } else {
-              this.setState({ scanningCard: true })
-            }
-          }}
-          last
-        >
+        {
+          this.props.scanCardVisible ?
+          <TouchableOpacity
+            style={styles.scanCardButton}
+            styles={styles}
+            onPress={() => {
+              if (this.props.onScanCardOpen) {
+                this.props.onScanCardOpen()
+              }
+              if (Platform.OS === 'android') {
+                CardIOModule
+                  .scanCard({
+                    // guideColor: this.props.scanCardGuideColor, // This isn't working at the moment.
+                    hideCardIOLogo: true,
+                    suppressManualEntry: true,
+                    suppressConfirmation: true,
+                  })
+                  .then((card) => this.didScanCard(card))
+                  .catch(() => {
+                    let refToFocus
+                    if (!calculatedState.cardNumber) {
+                      refToFocus = this.refs.cardNumberInput
+                    } else if (!calculatedState.expiry) {
+                      refToFocus = this.refs.expiryInput
+                    } else {
+                      refToFocus = this.refs.cvcInput
+                    }
+                    // Make sure keyboard stays open on android.
+                    _.delay(() => refToFocus.blur(), DELAY_FOCUS / 2)
+                    _.delay(() => refToFocus.focus(), DELAY_FOCUS)
+                  })
+              } else {
+                this.setState({ scanningCard: true })
+              }
+            }}
+            last
+          >
           <Text style={styles.scanCardButtonText}>
             {calculatedState.hasTriedScan ? this.props.scanCardAfterScanButtonText : this.props.scanCardButtonText}
           </Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        : null
+        }
+
         <TouchableOpacity
           style={styles.addButton}
           styles={styles}
