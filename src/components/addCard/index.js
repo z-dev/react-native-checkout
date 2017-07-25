@@ -29,6 +29,7 @@ export default class AddCard extends Component {
     activityIndicatorColor: React.PropTypes.string,
     scanCardButtonText: React.PropTypes.string,
     scanCardAfterScanButtonText: React.PropTypes.string,
+    scanCardVisible: React.PropTypes.bool,
     addCardButtonText: React.PropTypes.string,
   }
 
@@ -37,6 +38,7 @@ export default class AddCard extends Component {
     addCardButtonText: 'Add Card',
     scanCardAfterScanButtonText: 'Scan Again',
     scanCardButtonText: 'Scan Card',
+    scanCardVisible: true,
   }
 
   constructor(props) {
