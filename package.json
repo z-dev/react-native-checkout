@@ -14,14 +14,14 @@
   ],
   "private": false,
   "main": "src/index.js",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/z-dev/react-native-checkout"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/z-dev/react-native-checkout"
   },
   "dependencies": {
     "lodash": "^4.14.2",
     "payment": "^2.2.1",
-    "react-native-awesome-card-io": "^0.6.1",
+    "react-native-awesome-card-io": "0.7.0",
     "react-native-keyboard-spacer": "^0.3.0",
     "string": "^3.3.3"
   },
