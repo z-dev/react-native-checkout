@@ -1,6 +1,6 @@
 import { bold, grey, pressableColor, touchableOpacityContainer, innerTouchableOpacityContainer } from '../../common/styles'
 
-export default ({
+export default {
   addButton: {
     ...touchableOpacityContainer,
     marginTop: 20,
@@ -26,7 +26,7 @@ export default ({
     marginTop: 20,
   },
   cardTextLast4: {
-    fontWeight: bold
+    fontWeight: bold,
   },
   cardTextEndingIn: {
     marginRight: 4,
@@ -52,12 +52,9 @@ export default ({
     borderTopWidth: 1,
     borderColor: grey,
   },
-  paymentMethodsInnerViewContainer: {
-
-  },
+  paymentMethodsInnerViewContainer: {},
   selectPaymentContainer: {
     flex: 1,
     backgroundColor: '#F2F2F5',
   },
-
-})
+}

@@ -34,9 +34,8 @@ const buttonText = {
   textAlign: 'center',
 }
 
-export default ({
-  activityIndicator: {
-  },
+export default {
+  activityIndicator: {},
   activityIndicatorContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -49,13 +48,13 @@ export default ({
     backgroundColor: '#F2F2F5',
   },
   cardExpiryImage: {
-    ...cardImage
+    ...cardImage,
   },
   cardNumberContainer: {
-    ...cardFieldContainer
+    ...cardFieldContainer,
   },
   cardNumberImage: {
-    ...cardImage
+    ...cardImage,
   },
   cardNumberInput: {
     ...textInput,
@@ -67,7 +66,7 @@ export default ({
     flex: 1,
   },
   cvcImage: {
-    ...cardImage
+    ...cardImage,
   },
   cvcInput: {
     ...textInput,
@@ -103,4 +102,4 @@ export default ({
   scanCardButton: button,
   scanCardButtonText: buttonText,
   textInput: textInput,
-})
+}

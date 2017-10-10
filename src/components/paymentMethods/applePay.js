@@ -3,7 +3,7 @@ import { Image } from 'react-native'
 import TouchableOpacity from '../common/touchableOpacity'
 import applePay from '../../../assets/images/apple_pay.png'
 
-export default (props) =>
+export default props => (
   <TouchableOpacity
     {...props}
     innerStyle={props.styles.applePayContainer}
@@ -13,3 +13,4 @@ export default (props) =>
   >
     <Image source={applePay} />
   </TouchableOpacity>
+)
