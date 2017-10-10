@@ -43,6 +43,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
     addCardButtonText="Add Card"
     scanCardButtonText="Scan Card"
     scanCardAfterScanButtonText="Scan Card Again"
+    scanCardVisible={true}
   />
 ```
 
