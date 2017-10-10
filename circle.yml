@@ -1,15 +1,7 @@
 machine:
   node:
-    version: 7.6.0
-  environment:
-    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
-
-dependencies:
-  override:
-    - yarn install --pure-lockfile
-  cache_directories:
-    - ~/.cache/yarn
+    version: 8.4.0
 
 test:
   override:
-    - yarn ci
+    - npm run ci

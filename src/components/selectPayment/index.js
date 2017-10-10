@@ -22,7 +22,6 @@ export default class SelectPayment extends Component {
     addNewCardText: 'Add New Card',
   }
 
-
   render() {
     const styles = _.merge({}, defaultStyles, this.props.styles)
     return (

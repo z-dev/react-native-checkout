@@ -16,17 +16,15 @@ export const getCardToken = (cardNumber, expiryMonth, expiryYear, cvc, publicStr
     return `${encodedKey}=${encodedValue}`
   }).join('&')
 
-  return (
-    fetch(`${stripeUrl}tokens`, {
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Bearer ${publicStripeKey}`
-      },
-      body: formBody
-    })
-      .then((response) => response.text())
-      .then((responseText) => JSON.parse(responseText).id)
-  )
+  return fetch(`${stripeUrl}tokens`, {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Bearer ${publicStripeKey}`,
+    },
+    body: formBody,
+  })
+    .then(response => response.text())
+    .then(responseText => JSON.parse(responseText).id)
 }
