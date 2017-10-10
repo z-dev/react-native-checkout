@@ -44,6 +44,13 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
     scanCardButtonText="Scan Card"
     scanCardAfterScanButtonText="Scan Card Again"
     scanCardVisible={true}
+    placeholderTextColor="black"
+    cardNumberPlaceholderText="4242 4242 4242 4242"
+    expiryPlaceholderText="MM/YY"
+    cvcPlaceholderText="CVC"
+    cardNumberErrorMessage="Card Number is incorrect"
+    expiryErrorMessage="Expiry is incorrect"
+    cvcErrorMessage="CVC is incorrect"
   />
 ```
 
