@@ -13,6 +13,7 @@ Everything was designed with Stripe in mind, should also work with other payment
 ## Installation
 
 `yarn add react-native-checkout` or `npm i react-native-checkout --save`
+
 `yarn add react-native-awesome-card-io` or `npm i react-native-awesome-card-io --save`
 
 `react-native link react-native-awesome-card-io` <- Scan card functionality
