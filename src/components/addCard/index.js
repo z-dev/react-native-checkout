@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { ActivityIndicator, Platform, View, Image, TextInput, Text } from 'react-native'
 import _ from 'lodash'
 import s from 'string'
@@ -16,28 +17,28 @@ import cardCvc from '../../../assets/images/card_cvc.png'
 const DELAY_FOCUS = Platform.OS === 'android' ? 200 : 0
 export default class AddCard extends Component {
   static propTypes = {
-    addCardHandler: React.PropTypes.func.isRequired,
-    onCardNumberBlur: React.PropTypes.func,
-    onCardNumberFocus: React.PropTypes.func,
-    onCvcFocus: React.PropTypes.func,
-    onCvcBlur: React.PropTypes.func,
-    onExpiryBlur: React.PropTypes.func,
-    onExpiryFocus: React.PropTypes.func,
-    onScanCardClose: React.PropTypes.func,
-    onScanCardOpen: React.PropTypes.func,
-    styles: React.PropTypes.object,
-    activityIndicatorColor: React.PropTypes.string,
-    scanCardButtonText: React.PropTypes.string,
-    scanCardAfterScanButtonText: React.PropTypes.string,
-    scanCardVisible: React.PropTypes.bool,
-    addCardButtonText: React.PropTypes.string,
-    placeholderTextColor: React.PropTypes.string,
-    cardNumberPlaceholderText: React.PropTypes.string,
-    expiryPlaceholderText: React.PropTypes.string,
-    cvcPlaceholderText: React.PropTypes.string,
-    cardNumberErrorMessage: React.PropTypes.string,
-    expiryErrorMessage: React.PropTypes.string,
-    cvcErrorMessage: React.PropTypes.string,
+    addCardHandler: PropTypes.func.isRequired,
+    onCardNumberBlur: PropTypes.func,
+    onCardNumberFocus: PropTypes.func,
+    onCvcFocus: PropTypes.func,
+    onCvcBlur: PropTypes.func,
+    onExpiryBlur: PropTypes.func,
+    onExpiryFocus: PropTypes.func,
+    onScanCardClose: PropTypes.func,
+    onScanCardOpen: PropTypes.func,
+    styles: PropTypes.object,
+    activityIndicatorColor: PropTypes.string,
+    scanCardButtonText: PropTypes.string,
+    scanCardAfterScanButtonText: PropTypes.string,
+    scanCardVisible: PropTypes.bool,
+    addCardButtonText: PropTypes.string,
+    placeholderTextColor: PropTypes.string,
+    cardNumberPlaceholderText: PropTypes.string,
+    expiryPlaceholderText: PropTypes.string,
+    cvcPlaceholderText: PropTypes.string,
+    cardNumberErrorMessage: PropTypes.string,
+    expiryErrorMessage: PropTypes.string,
+    cvcErrorMessage: PropTypes.string,
   }
 
   static defaultProps = {

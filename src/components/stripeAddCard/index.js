@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { getCardToken } from '../../common/stripe'
 
 import AddCard from '../addCard'
 
 export default class StripeAddCard extends Component {
   static propTypes = {
-    publicStripeKey: React.PropTypes.string.isRequired,
-    addCardTokenHandler: React.PropTypes.func.isRequired,
+    publicStripeKey: PropTypes.string.isRequired,
+    addCardTokenHandler: PropTypes.func.isRequired,
   }
 
   render() {

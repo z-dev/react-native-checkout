@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 import _ from 'lodash'
 import PaymentMethods from '../paymentMethods'
@@ -7,13 +8,13 @@ import TouchableOpacity from '../common/touchableOpacity'
 
 export default class SelectPayment extends Component {
   static propTypes = {
-    enableApplePay: React.PropTypes.bool,
-    applePayHandler: React.PropTypes.func,
-    paymentSources: React.PropTypes.array,
-    addCardHandler: React.PropTypes.func.isRequired,
-    selectPaymentHandler: React.PropTypes.func.isRequired,
-    addNewCardText: React.PropTypes.string,
-    styles: React.PropTypes.object,
+    enableApplePay: PropTypes.bool,
+    applePayHandler: PropTypes.func,
+    paymentSources: PropTypes.array,
+    addCardHandler: PropTypes.func.isRequired,
+    selectPaymentHandler: PropTypes.func.isRequired,
+    addNewCardText: PropTypes.string,
+    styles: PropTypes.object,
   }
 
   static defaultProps = {
