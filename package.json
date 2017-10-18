@@ -29,6 +29,7 @@
   "dependencies": {
     "lodash": "^4.14.2",
     "payment": "^2.2.1",
+    "prop-types": "^15.6.0",
     "react-native-awesome-card-io": "0.7.0",
     "react-native-keyboard-spacer": "^0.4.1",
     "string": "^3.3.3"
