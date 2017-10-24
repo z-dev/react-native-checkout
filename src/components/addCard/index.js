@@ -9,7 +9,7 @@ import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
 import { formatMonthYearExpiry } from '../../common/cardFormatting'
-import ScanCard from '../scanCard'
+import ScanCard, { DefaultScanCardContainer } from '../scanCard'
 import cardFront from '../../../assets/images/card_front.png'
 import cardExpiry from '../../../assets/images/card_expiry.png'
 import cardCvc from '../../../assets/images/card_cvc.png'
@@ -39,6 +39,7 @@ export default class AddCard extends Component {
     cardNumberErrorMessage: PropTypes.string,
     expiryErrorMessage: PropTypes.string,
     cvcErrorMessage: PropTypes.string,
+    scanCardContainer: PropTypes.any,
   }
 
   static defaultProps = {
@@ -54,6 +55,7 @@ export default class AddCard extends Component {
     cardNumberErrorMessage: 'Card Number is incorrect',
     expiryErrorMessage: 'Expiry is incorrect',
     cvcErrorMessage: 'CVC is incorrect',
+    scanCardContainer: DefaultScanCardContainer,
   }
 
   constructor(props) {
@@ -142,7 +144,14 @@ export default class AddCard extends Component {
       )
     }
     if (calculatedState.scanningCard) {
-      return <ScanCard scanCardGuideColor={this.props.scanCardGuideColor} didScanCard={card => this.didScanCard(card)} />
+      return (
+        <ScanCard
+          scanCardContainer={this.props.scanCardContainer}
+          scanCardGuideColor={this.props.scanCardGuideColor}
+          onClose={() => this.setState({ scanningCard: false })}
+          didScanCard={card => this.didScanCard(card)}
+        />
+      )
     }
     const addCardContents = (
       <View>
