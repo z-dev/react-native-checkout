@@ -53,6 +53,7 @@ See our [full example](https://github.com/z-dev/react-native-checkout-example) f
     cardNumberErrorMessage="Card Number is incorrect"
     expiryErrorMessage="Expiry is incorrect"
     cvcErrorMessage="CVC is incorrect"
+    scanCardContainer={/*Custom component*/}
   />
 ```
 
@@ -104,4 +105,4 @@ Automatically adds cards to stripe
 
 [payment package](https://github.com/jessepollak/payment) provides card validation, which itself was based on the excellent [library by Stripe](https://github.com/stripe/jquery.payment).
 
-Stripe's [iOS library](https://stripe.com/docs/mobile/ios) and [checkout library](https://stripe.com/checkout) 
+Stripe's [iOS library](https://stripe.com/docs/mobile/ios) and [checkout library](https://stripe.com/checkout)
