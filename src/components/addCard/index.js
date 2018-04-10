@@ -82,7 +82,7 @@ export default class AddCard extends Component {
 
   componentDidMount() {
     if (this.props.autoFocus) {
-      this.refs.cardNumberInput.focus()
+      _.delay(() => this.refs.cardNumberInput.focus(), 1000)
     }
   }
 
