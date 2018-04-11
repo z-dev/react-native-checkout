@@ -18,6 +18,7 @@ const DELAY_FOCUS = Platform.OS === 'android' ? 200 : 0
 export default class AddCard extends Component {
   static propTypes = {
     addCardHandler: PropTypes.func.isRequired,
+    autoFocus: PropTypes.bool,
     onCardNumberBlur: PropTypes.func,
     onCardNumberFocus: PropTypes.func,
     onCvcFocus: PropTypes.func,
@@ -45,6 +46,7 @@ export default class AddCard extends Component {
   static defaultProps = {
     activityIndicatorColor: 'black',
     addCardButtonText: 'Add Card',
+    autoFocus: true,
     scanCardAfterScanButtonText: 'Scan Again',
     scanCardButtonText: 'Scan Card',
     scanCardVisible: true,
@@ -79,7 +81,9 @@ export default class AddCard extends Component {
   }
 
   componentDidMount() {
-    this.refs.cardNumberInput.focus()
+    if (this.props.autoFocus) {
+      _.delay(() => this.refs.cardNumberInput.focus(), 1000)
+    }
   }
 
   didScanCard(card) {
