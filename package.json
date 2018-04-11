@@ -1,6 +1,6 @@
 {
   "name": "react-native-checkout",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "description": "Cross Platform React Native component. Supports selecting payment method, adding cards manually and using the camera.",
   "keywords": [
