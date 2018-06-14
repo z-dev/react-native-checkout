@@ -170,7 +170,7 @@ export default class AddCard extends Component {
             onChangeText={rawCardNumber => {
               const cardNumber = s(rawCardNumber).replaceAll(' ', '').s
               this.setState({ cardNumber: cardNumber })
-              if (payment.fns.validateCardNumber(cardNumber)) {
+              if (payment.fns.validateCardNumber(cardNumber) && cardNumber.length === 16) {
                 this.refs.expiryInput.focus()
               }
             }}
