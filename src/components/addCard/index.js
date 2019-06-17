@@ -290,7 +290,9 @@ export default class AddCard extends Component {
               this.props
                 .addCardHandler(calculatedState.cardNumber, calculatedState.expiry, calculatedState.cvc)
                 .then(() => this.setState({ addingCard: false }))
-                .catch(error => this.setState({ error: error.message, addingCard: false }))
+                .catch(error => {
+                  this.setState({ error: _.get(error, 'response.body.message') || error.message, addingCard: false })
+                })
             }
           }}
           last
